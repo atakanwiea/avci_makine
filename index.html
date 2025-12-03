@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avcı Makine İnşaat - Ana Sayfa</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="home-body">
+
+    <!-- Sol Alt Sabit İletişim Butonları -->
+    <div class="floating-contact">
+        <a href="" id="floating-phone-btn" class="float-btn phone-btn" title="Hemen Ara">
+            <i class="fas fa-phone"></i>
+        </a>
+        <a href="" id="floating-whatsapp-btn" class="float-btn whatsapp-btn" title="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <header>
+        <div class="container navbar">
+            <div class="navbar-brand">
+                <div class="logo"><a href="index.html">AVCI MAKİNE <span class="insaat">İNŞAAT</span></a></div>
+                <div class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></div>
+            </div>
+            
+            <nav>
+                <ul class="nav-list" id="nav-list">
+                    <li><a href="index.html" class="active">Ana Sayfa</a></li>
+                    <li class="dropdown">
+                        <a href="urunler.html" class="dropdown-toggle">Ürünler <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="urunler.html?kategori=bukme"><i class="fas fa-bezier-curve"></i> Demir Bükme</a></li>
+                            <li><a href="urunler.html?kategori=kesme"><i class="fas fa-cut"></i> Demir Kesme</a></li>
+                            <li><a href="urunler.html?kategori=vibrator"><i class="fas fa-hammer"></i> Beton Vibratör</a></li>
+                            <li><a href="urunler.html?kategori=diger"><i class="fas fa-tools"></i> Diğer Ekipmanlar</a></li>
+                            <li><a href="urunler.html?kategori=hepsi"><i class="fas fa-th"></i> Tüm Ürünler</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="iletisim.html">İletişim</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-text">
+            <h1>Geleceği Güvenle İnşa Ediyoruz</h1>
+            <p>İhtiyacınız olan tüm inşaat makineleri tek adreste.</p>
+            <a href="urunler.html" class="btn">Tüm Kataloğu İncele</a>
+        </div>
+    </section>
+
+    <section class="categories section-padding">
+        <div class="container">
+            <h2 class="section-title">Ürün Kategorileri</h2>
+            <div class="category-grid">
+                
+                <a href="urunler.html?kategori=bukme" class="cat-card">
+                    <img src="images/afacan-18mm/afacan_18mm_demirbukme.jpg" alt="Demir Bükme">
+                    <div class="cat-info">
+                        <h3>Demir Bükme Makineleri</h3>
+                        <p>18mm, 20mm, 24mm Çeşitler</p>
+                    </div>
+                </a>
+
+                <a href="urunler.html?kategori=kesme" class="cat-card">
+                    <img src="images/22_mm_demir_kesme_makinasi-1-400x300_afacan.webp" alt="Demir Kesme">
+                    <div class="cat-info">
+                        <h3>Demir Kesme Makineleri</h3>
+                        <p>Hidrolik Güçlü Kesiciler</p>
+                    </div>
+                </a>
+
+                <a href="urunler.html?kategori=vibrator" class="cat-card">
+                    <img src="images/1500_watt_beton_vibratoru-698-900x675.jpg" alt="Beton Vibratör">
+                    <div class="cat-info">
+                        <h3>Beton Vibratörleri</h3>
+                        <p>Hortumlar ve Motorlar</p>
+                    </div>
+                </a>
+
+                <a href="urunler.html?kategori=hepsi" class="cat-card">
+                    <img src="images/afacan_ciroz.jpg" alt="Diğer Ekipmanlar">
+                    <div class="cat-info">
+                        <h3>Diğer Ekipmanlar</h3>
+                        <p>Kompaktör, Çiroz, Hortum</p>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer-iletisim">
+        <div class="container footer-row">
+            <div class="footer-col">
+                <h3>AVCI MAKİNE <span class="insaat">İNŞAAT</span></h3>
+                <p>İnşaat sektöründe güvenilir çözüm ortağınız. Kaliteli ekipman, zamanında teslimat.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Hızlı Erişim</h3>
+                <ul>
+                    <li><a href="index.html">Ana Sayfa</a></li>
+                    <li><a href="urunler.html">Ürün Kataloğu</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>İletişim Bilgileri</h3>
+                <p><i class="fas fa-phone-alt"></i> 0536 728 18 33</p>
+                <p><i class="fas fa-envelope"></i> selcukavcilar1970@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Nilüfer / Bursa</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 Avcı Makine İnşaat. Tüm Hakları Saklıdır.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

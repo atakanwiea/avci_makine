@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İletişim - Avcı Makine İnşaat</title>
+    <meta name="description" content="Avcı Makine İnşaat iletişim bilgileri, adres ve harita. Bizimle iletişime geçin.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- SOL ALT SABİT İLETİŞİM BUTONLARI -->
+    <div class="floating-contact">
+        <a href="" id="floating-phone-btn" class="float-btn phone-btn" title="Hemen Ara">
+            <i class="fas fa-phone"></i>
+        </a>
+        <a href="" id="floating-whatsapp-btn" class="float-btn whatsapp-btn" title="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <header>
+        <div class="container navbar">
+            <div class="navbar-brand">
+                <div class="logo"><a href="index.html">AVCI MAKİNE <span class="insaat">İNŞAAT</span></a></div>
+                <div class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></div>
+            </div>
+            
+            <nav>
+                <ul class="nav-list" id="nav-list">
+                    <li><a href="index.html">Ana Sayfa</a></li>
+                    <li class="dropdown">
+                        <a href="urunler.html" class="dropdown-toggle">Ürünler <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="urunler.html?kategori=bukme"><i class="fas fa-bezier-curve"></i> Demir Bükme</a></li>
+                            <li><a href="urunler.html?kategori=kesme"><i class="fas fa-cut"></i> Demir Kesme</a></li>
+                            <li><a href="urunler.html?kategori=vibrator"><i class="fas fa-hammer"></i> Beton Vibratör</a></li>
+                            <li><a href="urunler.html?kategori=diger"><i class="fas fa-tools"></i> Diğer Ekipmanlar</a></li>
+                            <li><a href="urunler.html?kategori=hepsi"><i class="fas fa-th"></i> Tüm Ürünler</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="iletisim.html" class="active">İletişim</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- BREADCRUMB -->
+    <div class="breadcrumb-section">
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="index.html"><i class="fas fa-home"></i> Ana Sayfa</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>İletişim</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- İLETİŞİM SECTION -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-header">
+                <h1><i class="fas fa-handshake"></i> Bizimle İletişime Geçin</h1>
+                <p class="contact-subtitle">AVCI MAKİNE İNŞAAT - İnşaat sektörünün güvenilir iş makineleri tedarikçisiyiz. Demir bükme, demir kesme, beton vibratör ve tüm inşaat ekipmanları konusunda profesyonel hizmet sunuyoruz.</p>
+            </div>
+
+            <!-- İLETİŞİM KARTLARI -->
+            <div class="contact-grid">
+                <!-- WHATSAPP -->
+                <div class="contact-card whatsapp">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <h3>WhatsApp Mesaj</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="phone-number" id="whatsapp-display">+90 536 728 18 33</div>
+                        <p>Anında mesajlaşma ve hızlı yanıt</p>
+                        <a href="" id="whatsapp-btn" class="contact-button whatsapp-button">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>Mesaj Gönder</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- TELEFON -->
+                <div class="contact-card phone">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h3>Telefon İle Ara</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="phone-number" id="phone-display">+90 536 728 18 33</div>
+                        <p>Doğrudan görüşme için arayın</p>
+                        <a href="" id="phone-btn" class="contact-button phone-button">
+                            <i class="fas fa-phone"></i>
+                            <span>Hemen Ara</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- EMAIL -->
+                <div class="contact-card email">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3>E-Mail Gönder</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="email-address">selcukavcilar1970@gmail.com</div>
+                        <p>Detaylı talep ve teklifler için</p>
+                        <a href="mailto:selcukavcilar1970@gmail.com" class="contact-button email-button">
+                            <i class="fas fa-envelope"></i>
+                            <span>E-Mail Gönder</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- İLETİŞİM BİLGİLERİ -->
+            <div class="contact-info">
+                <div class="info-grid">
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Adresimiz</h4>
+                            <p>Nilüfer, Bursa</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Çalışma Saatleri</h4>
+                            <p>Pzt-Cmt: 08:00-18:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER (Kanonik) -->
+    <footer id="footer-iletisim">
+        <div class="container footer-row">
+            <div class="footer-col">
+                <h3>AVCI MAKİNE <span class="insaat">İNŞAAT</span></h3>
+                <p>İnşaat sektöründe güvenilir çözüm ortağınız. Kaliteli ekipman, zamanında teslimat.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Hızlı Erişim</h3>
+                <ul>
+                    <li><a href="index.html">Ana Sayfa</a></li>
+                    <li><a href="urunler.html">Ürün Kataloğu</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>İletişim Bilgileri</h3>
+                <p><i class="fas fa-phone-alt"></i> 0536 728 18 33</p>
+                <p><i class="fas fa-envelope"></i> selcukavcilar1970@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Nilüfer / Bursa</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 Avcı Makine İnşaat. Tüm Hakları Saklıdır.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

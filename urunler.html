@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avcı Makine - Ürün Kataloğu</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="product-body">
+
+    <!-- Sol Alt Sabit İletişim Butonları -->
+    <div class="floating-contact">
+        <a href="" id="floating-phone-btn" class="float-btn phone-btn" title="Hemen Ara">
+            <i class="fas fa-phone"></i>
+        </a>
+        <a href="" id="floating-whatsapp-btn" class="float-btn whatsapp-btn" title="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <header>
+        <div class="container navbar">
+            <div class="navbar-brand">
+                <div class="logo"><a href="index.html">AVCI MAKİNE <span class="insaat">İNŞAAT</span></a></div>
+                <div class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></div>
+            </div>
+            
+            <nav>
+                <ul class="nav-list" id="nav-list">
+                    <li><a href="index.html">Ana Sayfa</a></li>
+                    <li class="dropdown">
+                        <a href="urunler.html" class="dropdown-toggle active">Ürünler <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="urunler.html?kategori=bukme"><i class="fas fa-bezier-curve"></i> Demir Bükme</a></li>
+                            <li><a href="urunler.html?kategori=kesme"><i class="fas fa-cut"></i> Demir Kesme</a></li>
+                            <li><a href="urunler.html?kategori=vibrator"><i class="fas fa-hammer"></i> Beton Vibratör</a></li>
+                            <li><a href="urunler.html?kategori=diger"><i class="fas fa-tools"></i> Diğer Ekipmanlar</a></li>
+                            <li><a href="urunler.html?kategori=hepsi"><i class="fas fa-th"></i> Tüm Ürünler</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="iletisim.html">İletişim</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- MOBİL KATEGORİ MENÜSÜ -->
+    <div class="mobile-categories">
+        <div class="mobile-categories-toggle" id="mobile-categories-toggle">
+            <span><i class="fas fa-list"></i> Kategoriler</span>
+            <i class="fas fa-chevron-down" id="mobile-categories-icon"></i>
+        </div>
+        <div class="mobile-categories-list" id="mobile-categories-list">
+            <div onclick="filterProducts('hepsi')" class="mobile-category-item filter-btn" id="mobile-btn-hepsi">
+                <i class="fas fa-th"></i> Tüm Ürünler
+            </div>
+            <div onclick="filterProducts('bukme')" class="mobile-category-item filter-btn" id="mobile-btn-bukme">
+                <i class="fas fa-bezier-curve"></i> Demir Bükme
+            </div>
+            <div onclick="filterProducts('kesme')" class="mobile-category-item filter-btn" id="mobile-btn-kesme">
+                <i class="fas fa-cut"></i> Demir Kesme
+            </div>
+            <div onclick="filterProducts('vibrator')" class="mobile-category-item filter-btn" id="mobile-btn-vibrator">
+                <i class="fas fa-hammer"></i> Beton Vibratörü
+            </div>
+            <div onclick="filterProducts('vibrator-hortum')" class="mobile-category-item filter-btn" id="mobile-btn-vibrator-hortum">
+                <i class="fas fa-slash"></i> Beton Vibratör Hortumu
+            </div>
+            <div onclick="filterProducts('asfalt-kesme')" class="mobile-category-item filter-btn" id="mobile-btn-asfalt-kesme">
+                <i class="fas fa-road"></i> Asfalt Kesme Makinesi
+            </div>
+            <div onclick="filterProducts('benzinli-kompaktor')" class="mobile-category-item filter-btn" id="mobile-btn-benzinli-kompaktor">
+                <i class="fas fa-compress"></i> Benzinli Kompaktör
+            </div>
+            <div onclick="filterProducts('ciroz')" class="mobile-category-item filter-btn" id="mobile-btn-ciroz">
+                <i class="fas fa-link"></i> Çiroz
+            </div>
+            <div onclick="filterProducts('el-aletleri')" class="mobile-category-item filter-btn" id="mobile-btn-el-aletleri">
+                <i class="fas fa-tools"></i> El Aletleri
+            </div>
+        </div>
+    </div>
+
+    <div class="wide-container catalog-layout">
+        
+        <aside class="sidebar">
+            <div class="sidebar-sticky">
+                <h3>Kategoriler</h3>
+                <ul>
+                    <li onclick="filterProducts('hepsi')" class="filter-btn" id="btn-hepsi"><i class="fas fa-th"></i> Tüm Ürünler</li>
+                    <li onclick="filterProducts('bukme')" class="filter-btn" id="btn-bukme"><i class="fas fa-bezier-curve"></i> Demir Bükme</li>
+                    <li onclick="filterProducts('kesme')" class="filter-btn" id="btn-kesme"><i class="fas fa-cut"></i> Demir Kesme</li>
+                    <li onclick="filterProducts('vibrator')" class="filter-btn" id="btn-vibrator"><i class="fas fa-hammer"></i> Beton Vibratörü</li>
+                    <li onclick="filterProducts('vibrator-hortum')" class="filter-btn" id="btn-vibrator-hortum"><i class="fas fa-slash"></i> Beton Vibratör Hortumu</li>
+                    <li onclick="filterProducts('asfalt-kesme')" class="filter-btn" id="btn-asfalt-kesme"><i class="fas fa-road"></i> Asfalt Kesme Makinesi</li>
+                    <li onclick="filterProducts('benzinli-kompaktor')" class="filter-btn" id="btn-benzinli-kompaktor"><i class="fas fa-compress"></i> Benzinli Kompaktör</li>
+                    <li onclick="filterProducts('ciroz')" class="filter-btn" id="btn-ciroz"><i class="fas fa-link"></i> Çiroz</li>
+                    <li onclick="filterProducts('el-aletleri')" class="filter-btn" id="btn-el-aletleri"><i class="fas fa-tools"></i> El Aletleri</li>
+                </ul>
+            </div>
+        </aside>
+
+        <main class="product-content">
+            <h2 id="category-header">Tüm Ürünlerimiz</h2>
+            <div class="product-grid" id="product-container">
+                </div>
+        </main>
+    </div>
+
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div class="modal-body">
+                <div class="modal-img-box">
+                    <img id="m-img" src="" alt="">
+                </div>
+                <div class="modal-info-box">
+                    <h2 id="m-title">Başlık</h2>
+                    <p id="m-desc">Açıklama</p>
+                    <div class="specs-box">
+                        <h4>Özellikler:</h4>
+                        <ul id="m-specs"></ul>
+                    </div>
+                    <a href="https://wa.me/905367281833" target="_blank" class="whatsapp-btn">
+                        <i class="fab fa-whatsapp"></i> 0536 728 18 33 / Bilgi Al
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="footer-iletisim">
+        <div class="container footer-row">
+            <div class="footer-col">
+                <h3>AVCI MAKİNE <span class="insaat">İNŞAAT</span></h3>
+                <p>İnşaat sektöründe güvenilir çözüm ortağınız.</p>
+            </div>
+            <div class="footer-col">
+                <h3>İletişim Bilgileri</h3>
+                <p><i class="fas fa-phone-alt"></i> 0536 728 18 33</p>
+                <p><i class="fas fa-envelope"></i> selcukavcilar1970@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Nilüfer / Bursa</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 Avcı Makine İnşaat. Tüm Hakları Saklıdır.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
