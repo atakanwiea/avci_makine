@@ -200,6 +200,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         filterProducts(categoryParam);
     }
+
+    // Ürün Detay Sayfası Kontrolü
+    const productDetailContainer = document.getElementById('product-detail-container');
+    if (productDetailContainer) {
+        renderProductDetail();
+    }
 });
 
 function filterProducts(category) {
@@ -229,8 +235,7 @@ function filterProducts(category) {
     // HTML Oluştur
     let html = '';
     filteredData.forEach(item => {
-        // Önce detailPage özelliğini kontrol et, yoksa generateProductUrl kullan
-        const productUrl = item.detailPage || generateProductUrl(item.name, item.id);
+        const productUrl = generateProductUrl(item.name, item.id);
         html += `
         <div class="p-card" onclick="window.location.href='${productUrl}'">
             <img src="${item.img}" alt="${item.name}">
@@ -247,37 +252,176 @@ function filterProducts(category) {
 
 // ÜRÜN SAYFA URL'İ OLUŞTUR
 function generateProductUrl(productName, productId) {
-    // Özel URL mappings için
-    const specialUrls = {
-        'Afacan R18': 'afacan-18mm-demir-bukme.html',
-        'Afacan R20': 'afacan-20mm-demir-bukme.html',
-        'Afacan R24': 'afacan-24mm-demir-bukme.html',
-        'Anadolu DB25': 'anadolu-db25.html',
-        // Buraya daha fazla özel URL eklenebilir
-    };
+    return `urun-detay.html?id=${productId}`;
+}
+
+// ÜRÜN DETAY SAYFASI RENDER FONKSİYONU
+function renderProductDetail() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = parseInt(urlParams.get('id'));
     
-    // Özel URL varsa onu kullan
-    for (let key in specialUrls) {
-        if (productName.includes(key)) {
-            return specialUrls[key];
-        }
+    const product = products.find(p => p.id === productId);
+    const container = document.getElementById('product-detail-container');
+    
+    if (!product) {
+        container.innerHTML = '<div style="text-align: center; padding: 50px;"><h2>Ürün Bulunamadı</h2><a href="urunler.html" class="btn">Kataloğa Dön</a></div>';
+        return;
     }
     
-    // Otomatik URL oluştur (ürün adından)
-    let slug = productName
-        .toLowerCase()
-        .replace(/ı/g, 'i')
-        .replace(/ğ/g, 'g')
-        .replace(/ü/g, 'u')
-        .replace(/ş/g, 's')
-        .replace(/ç/g, 'c')
-        .replace(/ö/g, 'o')
-        .replace(/[^a-z0-9\s]/g, '') // özel karakterleri kaldır
-        .trim()
-        .replace(/\s+/g, '-') // boşlukları tire ile değiştir
-        .substring(0, 50); // 50 karakter ile sınırla
-        
-    return slug + '.html';
+    // SEO Güncellemeleri
+    document.title = `${product.name} - AVCI MAKİNE İNŞAAT`;
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if(metaDesc) {
+        metaDesc.setAttribute('content', `${product.name} - ${product.desc}`);
+    }
+    
+    // Breadcrumb Güncellemesi
+    document.getElementById('bc-product-name').innerText = product.name;
+    const catLink = document.getElementById('bc-category-link');
+    catLink.href = `urunler.html?kategori=${product.category}`;
+    
+    // Kategori adını bul
+    let catName = "Kategori";
+    if(product.category === 'bukme') catName = "Demir Bükme";
+    if(product.category === 'kesme') catName = "Demir Kesme";
+    if(product.category === 'vibrator') catName = "Beton Vibratörleri";
+    if(product.category === 'vibrator-hortum') catName = "Beton Vibratör Hortumu";
+    if(product.category === 'asfalt-kesme') catName = "Asfalt Kesme Makinesi";
+    if(product.category === 'benzinli-kompaktor') catName = "Benzinli Kompaktör";
+    if(product.category === 'ciroz') catName = "Çiroz";
+    if(product.category === 'el-aletleri') catName = "El Aletleri";
+    
+    // Specs listesi ve tablosu oluştur
+    const specsList = product.specs.map(s => `<li>${s}</li>`).join('');
+    const specsTable = product.specs.map(s => {
+        let parts = s.split(':');
+        if(parts.length > 1) return `<tr><td>${parts[0]}</td><td>${parts[1]}</td></tr>`;
+        return `<tr><td colspan="2">${s}</td></tr>`;
+    }).join('');
+    
+    // Benzer Ürünler
+    const relatedProducts = products.filter(p => p.category === product.category && p.id !== product.id).slice(0, 3);
+    let relatedHtml = '';
+    relatedProducts.forEach(rp => {
+        relatedHtml += `
+        <div class="related-item" onclick="window.location.href='urun-detay.html?id=${rp.id}'">
+            <img src="${rp.img}" alt="${rp.name}">
+            <h4>${rp.name}</h4>
+            <span class="related-price">İncele</span>
+        </div>`;
+    });
+    
+    let relatedSection = '';
+    if(relatedProducts.length > 0) {
+        relatedSection = `
+        <div class="related-products">
+            <h3><i class="fas fa-layer-group"></i> Benzer Ürünler</h3>
+            <div class="related-grid">
+                ${relatedHtml}
+            </div>
+        </div>`;
+    }
+
+    const html = `
+    <div class="product-detail-layout">
+        <!-- ÜRÜN RESİMLERİ -->
+        <div class="product-images">
+            <div class="main-image">
+                <img id="main-product-img" src="${product.img}" alt="${product.name}">
+                <div class="image-zoom-overlay">
+                    <i class="fas fa-search-plus"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- ÜRÜN BİLGİLERİ -->
+        <div class="product-info">
+            <div class="product-header">
+                <h1>${product.name}</h1>
+                <div class="product-category">
+                    <span class="category-tag"><i class="fas fa-tag"></i> ${catName}</span>
+                </div>
+            </div>
+
+            <div class="product-summary">
+                <p>${product.desc}</p>
+            </div>
+
+            <!-- ÖZELLİKLER -->
+            <div class="product-features">
+                <h3><i class="fas fa-cogs"></i> Teknik Özellikler</h3>
+                <ul class="features-list">
+                    ${specsList}
+                </ul>
+            </div>
+
+            <!-- FİYAT VE İLETİŞİM -->
+            <div class="product-pricing">
+                <div class="price-section">
+                    <div class="price-label">Fiyat Bilgisi İçin:</div>
+                    <div class="contact-buttons">
+                        <a href="tel:${TELEFON_NUMARASI_GLOBAL}" class="btn-primary">
+                            <i class="fas fa-phone"></i> Hemen Ara
+                        </a>
+                        <a href="https://wa.me/${WHATSAPP_NUMARASI_GLOBAL}?text=${encodeURIComponent('Merhaba, ' + product.name + ' için fiyat teklifi istiyorum.')}" target="_blank" class="btn-whatsapp">
+                            <i class="fab fa-whatsapp"></i> WhatsApp Fiyat Al
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AVANTAJLAR -->
+            <div class="product-advantages">
+                <h3><i class="fas fa-star"></i> Ürün Avantajları</h3>
+                <div class="advantages-grid">
+                    <div class="advantage-item">
+                        <i class="fas fa-shipping-fast"></i>
+                        <span>Hızlı Teslimat</span>
+                    </div>
+                    <div class="advantage-item">
+                        <i class="fas fa-tools"></i>
+                        <span>Ücretsiz Destek</span>
+                    </div>
+                    <div class="advantage-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>2 Yıl Garanti</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ÜRÜN AÇIKLAMASI -->
+    <div class="product-description">
+        <div class="tabs-container">
+            <div class="tabs-nav">
+                <button class="tab-btn active" onclick="openTab(event, 'description')">
+                    <i class="fas fa-info-circle"></i> Genel Açıklama
+                </button>
+                <button class="tab-btn" onclick="openTab(event, 'specifications')">
+                    <i class="fas fa-list"></i> Teknik Tablo
+                </button>
+            </div>
+
+            <div id="description" class="tab-content active">
+                <h3>${product.name} Detayları</h3>
+                <p>${product.desc}</p>
+                <p>Türkiye'nin her yerine hızlı teslimat ve kurulum imkanı. Detaylı bilgi için bizimle iletişime geçebilirsiniz.</p>
+            </div>
+
+            <div id="specifications" class="tab-content">
+                <h3>Teknik Detaylar</h3>
+                <table class="specs-table">
+                    ${specsTable}
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    ${relatedSection}
+    `;
+    
+    container.innerHTML = html;
 }
 
 // MODAL İŞLEMLERİ (Eski sistem - geriye uyumluluk için)

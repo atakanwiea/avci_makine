@@ -161,7 +161,16 @@ header { background-color: #003366; color: white; padding: 1rem 0; position: sti
     z-index: 1000;
 }
 
-/* Click ile açılır dropdown - hover kaldırıldı */
+/* Desktop hover ile açılır dropdown */
+@media (min-width: 769px) {
+    .dropdown:hover .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+}
+
+/* Mobil için click ile açılır dropdown */
 .dropdown.active .dropdown-menu {
     opacity: 1;
     visibility: visible;
