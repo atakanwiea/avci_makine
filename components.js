@@ -17,32 +17,37 @@ function renderFloatingContact() {
 
 function renderHeader() {
     const currentPath = window.location.pathname;
-    const isHome = currentPath.endsWith('index.html') || currentPath.endsWith('/');
+    const isHome = currentPath === '/' || currentPath.endsWith('/index.html') && currentPath.split('/').length === 2;
     const isProducts = currentPath.includes('urunler.html') || currentPath.includes('urun-detay.html');
     const isContact = currentPath.includes('iletisim.html');
+    const isRegions = currentPath.includes('/bolgeler/');
 
     const headerHtml = `
     <header>
         <div class="container navbar">
             <div class="navbar-brand">
-                <div class="logo"><a href="index.html">AVCI <span class="insaat">MAKİNE</span></a></div>
+                <div class="logo"><a href="/">AVCI <span class="insaat">MAKİNE</span></a></div>
                 <div class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></div>
             </div>
             
             <nav>
                 <ul class="nav-list" id="nav-list">
-                    <li><a href="index.html" class="${isHome ? 'active' : ''}">Ana Sayfa</a></li>
+                    <li><a href="/" class="${isHome ? 'active' : ''}">Ana Sayfa</a></li>
                     <li class="dropdown">
-                        <a href="urunler.html" class="dropdown-toggle ${isProducts ? 'active' : ''}">Ürünler <i class="fas fa-chevron-down"></i></a>
+                        <a href="/urunler.html" class="dropdown-toggle ${isProducts ? 'active' : ''}">Ürünler <i class="fas fa-chevron-down"></i></a>
                         <ul class="dropdown-menu">
-                            <li><a href="urunler.html?kategori=bukme"><i class="fas fa-bezier-curve"></i> Demir Bükme</a></li>
-                            <li><a href="urunler.html?kategori=kesme"><i class="fas fa-cut"></i> Demir Kesme</a></li>
-                            <li><a href="urunler.html?kategori=vibrator"><i class="fas fa-hammer"></i> Beton Vibratör</a></li>
-                            <li><a href="urunler.html?kategori=diger"><i class="fas fa-tools"></i> Diğer Ekipmanlar</a></li>
-                            <li><a href="urunler.html?kategori=hepsi"><i class="fas fa-th"></i> Tüm Ürünler</a></li>
+                            <li><a href="/demir_bukme/"><i class="fas fa-bezier-curve"></i> Demir Bükme</a></li>
+                            <li><a href="/demir_kesme/"><i class="fas fa-cut"></i> Demir Kesme</a></li>
+                            <li><a href="/beton_vibratoru/"><i class="fas fa-hammer"></i> Beton Vibratörü</a></li>
+                            <li><a href="/vibrator_hortumu/"><i class="fas fa-slash"></i> Vibratör Hortumu</a></li>
+                            <li><a href="/kompaktor/"><i class="fas fa-compress"></i> Kompaktör</a></li>
+                            <li><a href="/ciroz/"><i class="fas fa-link"></i> Çiroz</a></li>
+                            <li><a href="/el_aletleri/"><i class="fas fa-tools"></i> El Aletleri</a></li>
+                            <li><a href="/urunler.html"><i class="fas fa-th"></i> Tüm Ürünler</a></li>
                         </ul>
                     </li>
-                    <li><a href="iletisim.html" class="${isContact ? 'active' : ''}">İletişim</a></li>
+                    <li><a href="/bolgeler/" class="${isRegions ? 'active' : ''}">Hizmet Bölgeleri</a></li>
+                    <li><a href="/iletisim.html" class="${isContact ? 'active' : ''}">İletişim</a></li>
                 </ul>
             </nav>
         </div>
@@ -65,8 +70,13 @@ function renderFooter() {
             <div class="footer-col">
                 <h3>Hızlı Erişim</h3>
                 <ul>
-                    <li><a href="index.html">Ana Sayfa</a></li>
-                    <li><a href="urunler.html">Ürün Kataloğu</a></li>
+                    <li><a href="/">Ana Sayfa</a></li>
+                    <li><a href="/urunler.html">Ürün Kataloğu</a></li>
+                    <li><a href="/beton_vibratoru/">Beton Vibratörü</a></li>
+                    <li><a href="/demir_bukme/">Demir Bükme Makinesi</a></li>
+                    <li><a href="/demir_kesme/">Demir Kesme Makinesi</a></li>
+                    <li><a href="/kompaktor/">Kompaktör</a></li>
+                    <li><a href="/bolgeler/">Hizmet Bölgeleri</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -74,6 +84,7 @@ function renderFooter() {
                 <p><i class="fas fa-phone-alt"></i> <a href="tel:${TELEFON_NUMARASI_GLOBAL}" style="color: inherit; text-decoration: none;">0536 728 18 33</a></p>
                 <p><i class="fas fa-envelope"></i> <a href="mailto:selcukavcilar1970@gmail.com" style="color: inherit; text-decoration: none;">selcukavcilar1970@gmail.com</a></p>
                 <p><i class="fas fa-map-marker-alt"></i> Nilüfer / Bursa</p>
+                <p><i class="fas fa-truck"></i> Türkiye'nin 81 iline gönderim</p>
             </div>
         </div>
         <div class="copyright">

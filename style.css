@@ -1315,3 +1315,40 @@ footer { background: #1a1a1a; color: #ccc; padding: 50px 0 20px 0; margin-top: a
         font-size: 1rem;
     }
 }
+/* STATİK SEO SAYFALARI (kategori, ürün, bölge) - tools/sayfa-uret.js */
+.seo-page { padding: 40px 0; background: white; flex: 1; }
+.seo-hero { margin-bottom: 30px; }
+.seo-hero h1 { color: #003366; font-size: 2.2rem; margin-bottom: 10px; }
+.seo-hero p { margin-bottom: 12px; font-size: 1.05rem; color: #444; }
+.seo-subtitle { color: #003366 !important; font-weight: 600; }
+.seo-block { margin: 40px 0; }
+.seo-block h2 { color: #003366; font-size: 1.5rem; margin-bottom: 15px; border-bottom: 2px solid #ffcc00; padding-bottom: 8px; }
+.seo-block h2 i { color: #ffcc00; margin-right: 6px; }
+.seo-block p { margin-bottom: 12px; color: #444; }
+.seo-block p a, .seo-block td a { color: #003366; font-weight: 600; text-decoration: underline; }
+.seo-block .product-grid { margin-top: 20px; }
+.seo-list { list-style: disc; padding-left: 22px; }
+.seo-list li { margin-bottom: 8px; color: #444; }
+.seo-cta { background: #f0f4f8; border-left: 4px solid #ffcc00; border-radius: 8px; padding: 20px; margin: 30px 0; }
+.seo-cta p { margin-bottom: 12px; }
+.table-scroll { overflow-x: auto; }
+.faq-item { border: 1px solid #e5e5e5; border-radius: 8px; margin-bottom: 10px; background: #fafafa; }
+.faq-item summary { cursor: pointer; padding: 14px 18px; font-weight: 600; color: #003366; }
+.faq-item p { padding: 0 18px 14px; margin: 0; }
+.city-links { display: flex; flex-wrap: wrap; gap: 8px; }
+.city-links a, .city-links span { padding: 6px 14px; border-radius: 20px; font-size: 0.95rem; }
+.city-links a { background: #003366; color: white; }
+.city-links a:hover { background: #ffcc00; color: #003366; }
+.city-links span { background: #f0f0f0; color: #555; }
+.p-card h3 { color: #333; font-size: 1.1rem; margin-bottom: 10px; }
+.product-features h2, .related-products h2 { color: #003366; font-size: 1.3rem; margin-bottom: 15px; }
+a.related-item, a.category-tag { display: block; color: inherit; }
+a.category-tag { display: inline-block; }
+@media (max-width: 768px) {
+    .seo-hero h1 { font-size: 1.7rem; }
+    .seo-block h2 { font-size: 1.25rem; }
+    .seo-page .product-grid, .seo-block .product-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .seo-page .p-card img, .seo-block .p-card img { height: 120px; }
+    .seo-page .p-card h3, .seo-block .p-card h3 { font-size: 0.95rem; }
+    .seo-page .p-info, .seo-block .p-info { padding: 10px; }
+}
