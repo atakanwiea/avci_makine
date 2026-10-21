@@ -26,7 +26,7 @@ function renderHeader() {
     <header>
         <div class="container navbar">
             <div class="navbar-brand">
-                <div class="logo"><a href="/" class="brand-logo"><img src="/images/logo-avci.png" alt="Avcı" width="115" height="46"><span class="brand-sub">İnşaat Makine ve<br>Teknik Servis</span></a></div>
+                <div class="logo"><a href="/" class="brand-logo"><span class="brand-chip"><img src="/images/logo-avci.png" alt="Avcı" width="104" height="32"></span><span class="brand-sub">İnşaat Makine ve<br>Teknik Servis</span></a></div>
                 <div class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></div>
             </div>
             

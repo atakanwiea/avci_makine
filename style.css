@@ -1353,19 +1353,8 @@ a.category-tag { display: inline-block; }
     .seo-page .p-info, .seo-block .p-info { padding: 10px; }
 }
 
-/* Kartvizitteki gibi beyaz başlık ve Avcı logosu */
-header { background-color: #fff; color: #003366; border-bottom: 3px solid #1d5bc4; }
-.brand-logo { display: flex; align-items: center; gap: 12px; }
-.brand-logo img { height: 46px; width: auto; display: block; }
-.brand-sub { font-family: "Gill Sans", "Gill Sans MT", Calibri, "Segoe UI", sans-serif; font-size: 1rem; font-weight: 400; line-height: 1.2; letter-spacing: 0; color: #2b2b2b; }
-.nav-list a { color: #1f2d3d; font-weight: 600; }
-.nav-list a:hover, .nav-list a.active { color: #1d5bc4; }
-.dropdown-menu a { color: #e0e0e0; }
-@media (max-width: 768px) {
-    .brand-logo img { height: 38px; }
-    .brand-sub { font-size: 0.85rem; }
-    .nav-list a { color: #e0e0e0; }
-    .nav-list a:hover, .nav-list a.active { color: #ffcc00; }
-    .dropdown.active .dropdown-menu { max-height: 500px; }
-}
-.menu-toggle { color: #003366; }
+/* Kartvizitteki Avcı logosu (header) */
+.brand-logo { display: flex; align-items: center; gap: 10px; }
+.brand-chip { background: #fff; border-radius: 6px; padding: 5px 10px; display: flex; align-items: center; }
+.brand-chip img { height: 32px; width: auto; display: block; }
+.brand-sub { font-size: 0.8rem; font-weight: 600; line-height: 1.2; letter-spacing: 0; color: #fff; }
