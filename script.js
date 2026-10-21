@@ -1,6 +1,7 @@
 // --- GLOBAL AYARLAR ---
 const TELEFON_NUMARASI = '+905367281833'; // Buradan tüm siteyi yönet
 const WHATSAPP_NUMARASI = '905367281833'; // WhatsApp için prefix'siz
+const TELEFON_GORUNEN = '+90 536 728 18 33'; // Sayfada gösterilen hali
 
 // --- GÜVENLİK AYARI: İZİN VERİLEN KATEGORİLER ---
 // Bu liste dışındaki bir kelime url'ye yazılırsa sistem otomatik 'hepsi' yapar.
@@ -60,13 +61,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const phoneDisplay = document.getElementById('phone-display');
         const whatsappDisplay = document.getElementById('whatsapp-display');
         
-        if(contactPhoneDisplay) contactPhoneDisplay.textContent = TELEFON_NUMARASI;
-        if(whatsappPhoneDisplay) whatsappPhoneDisplay.textContent = TELEFON_NUMARASI;
-        if(supportPhoneDisplay) supportPhoneDisplay.textContent = TELEFON_NUMARASI;
+        if(contactPhoneDisplay) contactPhoneDisplay.textContent = TELEFON_GORUNEN;
+        if(whatsappPhoneDisplay) whatsappPhoneDisplay.textContent = TELEFON_GORUNEN;
+        if(supportPhoneDisplay) supportPhoneDisplay.textContent = TELEFON_GORUNEN;
         
         // Yeni tasarım ID'leri
-        if(phoneDisplay) phoneDisplay.textContent = TELEFON_NUMARASI;
-        if(whatsappDisplay) whatsappDisplay.textContent = TELEFON_NUMARASI;
+        if(phoneDisplay) phoneDisplay.textContent = TELEFON_GORUNEN;
+        if(whatsappDisplay) whatsappDisplay.textContent = TELEFON_GORUNEN;
         
         // İletişim sayfası butonları
         const contactPhoneBtn = document.getElementById('contact-phone-btn');

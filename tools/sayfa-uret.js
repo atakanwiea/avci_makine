@@ -119,7 +119,7 @@ function urunKarti(p) {
 
 function sssHtml(sss, baslik = 'Sıkça Sorulan Sorular') {
     return `<div class="seo-block">
-                <h2><i class="fas fa-question-circle"></i> ${esc(baslik)}</h2>
+                <h2>${esc(baslik)}</h2>
                 ${sss.map(s => `<details class="faq-item">
                     <summary>${esc(s.q)}</summary>
                     <p>${esc(s.a)}</p>
@@ -138,14 +138,8 @@ function iletisimKutusu(mesaj) {
 }
 
 function bolgeLinkleri(haric) {
-    return `<div class="seo-block">
-                <h2><i class="fas fa-map-marked-alt"></i> Hizmet Bölgelerimiz</h2>
-                <p>Bursa'dan Türkiye'nin 81 iline gönderim yapıyoruz. Düzenli olarak bizzat gittiğimiz bölgeler:</p>
-                <div class="city-links">
-                    ${sehirler.filter(s => s.slug !== haric).map(s => `<a href="/bolgeler/${s.slug}.html">${esc(s.ad)}</a>`).join('\n                    ')}
-                    <a href="/bolgeler/">Tüm iller</a>
-                </div>
-            </div>`;
+    const linkler = sehirler.filter(s => s.slug !== haric).map(s => `<a href="/bolgeler/${s.slug}.html">${esc(s.ad)}</a>`);
+    return `<p class="bolge-satir">Bursa'dan Türkiye'nin 81 iline gönderim yapıyoruz. Düzenli olarak gittiğimiz bölgeler: ${linkler.join(', ')}. <a href="/bolgeler/">Tüm hizmet bölgeleri</a></p>`;
 }
 
 // --- KATEGORİ SAYFALARI ---
@@ -155,7 +149,7 @@ for (const [catKey, cat] of Object.entries(categories)) {
     if (!icerik || urunler.length === 0) continue;
 
     const karsilastirma = `<div class="seo-block">
-                <h2><i class="fas fa-table"></i> ${esc(cat.name)} Karşılaştırma</h2>
+                <h2>${esc(cat.name)} Karşılaştırma</h2>
                 <div class="table-scroll">
                 <table class="specs-table">
                     ${urunler.map(p => `<tr><td><a href="/${p.detailPage}">${esc(p.name)}</a></td><td>${p.specs.slice(0, 3).map(esc).join(' · ')}</td></tr>`).join('\n                    ')}
@@ -177,15 +171,13 @@ for (const [catKey, cat] of Object.entries(categories)) {
             ${iletisimKutusu(`Merhaba, ${cat.short} makineleri hakkında fiyat bilgisi almak istiyorum.`)}
 
             ${icerik.rehber.map(r => `<div class="seo-block">
-                <h2><i class="fas fa-lightbulb"></i> ${esc(r.baslik)}</h2>
+                <h2>${esc(r.baslik)}</h2>
                 <ul class="seo-list">
                     ${r.maddeler.map(m => `<li>${m}</li>`).join('\n                    ')}
                 </ul>
             </div>`).join('\n            ')}
 
             ${karsilastirma}
-
-            ${sssHtml(icerik.sss)}
 
             ${bolgeLinkleri()}
         </div>
@@ -202,8 +194,7 @@ for (const [catKey, cat] of Object.entries(categories)) {
             {
                 '@type': 'CollectionPage', name: icerik.h1, url: tamUrl(`${cat.slug}/`),
                 mainEntity: { '@type': 'ItemList', itemListElement: urunler.map((p, i) => ({ '@type': 'ListItem', position: i + 1, url: tamUrl(p.detailPage), name: p.name })) }
-            },
-            sssLd(icerik.sss)
+            }
         ],
         govde
     });
@@ -217,12 +208,6 @@ for (const p of products) {
         const i = s.indexOf(':');
         return i > -1 ? { ad: s.slice(0, i).trim(), deger: s.slice(i + 1).trim() } : { ad: s, deger: '' };
     });
-
-    const sss = [
-        { q: `${p.name} fiyatı ne kadar?`, a: `${p.name} için güncel fiyat ve stok bilgisini ${firma.telefonGorunen} numarasından WhatsApp'tan yazarak veya arayarak hemen öğrenebilirsiniz.` },
-        ...specs.filter(s => s.deger).slice(0, 2).map(s => ({ q: `${p.name} ${s.ad.toLocaleLowerCase('tr')} nedir?`, a: `${p.name} için ${s.ad.toLocaleLowerCase('tr')}: ${s.deger}.` })),
-        { q: `${p.name} hangi illere gönderiliyor?`, a: `${p.name} modelini Bursa'dan Türkiye'nin 81 iline gönderiyoruz. İstanbul, İzmir, Ankara, Eskişehir, Balıkesir, Yalova ve diğer tüm illerden sipariş verebilirsiniz.` }
-    ];
 
     const benzerler = kategoriUrunleri(p.category).filter(r => r.id !== p.id).slice(0, 3);
     const benzerHtml = benzerler.length ? `<div class="related-products">
@@ -285,26 +270,18 @@ for (const p of products) {
         </div>
 
         <div class="seo-block">
-            <h2><i class="fas fa-info-circle"></i> ${esc(p.name)} Hakkında</h2>
-            <p>${esc(p.name)}, ${esc(p.brand)} markasının ${esc(cat.short.toLocaleLowerCase('tr'))} modellerinden biridir. ${esc(p.desc)}</p>
-            <p>Avcı Makine olarak ${esc(p.name)} modelini Bursa'dan Türkiye'nin her yerine gönderiyoruz. Diğer modellerle karşılaştırmak için <a href="${kategoriUrl(p.category)}">${esc(cat.name)}</a> sayfamıza göz atabilirsiniz.</p>
-        </div>
-
-        <div class="seo-block">
-            <h2><i class="fas fa-list"></i> Teknik Tablo</h2>
+            <h2>Teknik Tablo</h2>
             <table class="specs-table">
                 ${specs.map(s => s.deger ? `<tr><td>${esc(s.ad)}</td><td>${esc(s.deger)}</td></tr>` : `<tr><td colspan="2">${esc(s.ad)}</td></tr>`).join('\n                ')}
             </table>
         </div>
 
         ${icerik ? `<div class="seo-block">
-            <h2><i class="fas fa-hard-hat"></i> Kullanım Alanları</h2>
+            <h2>Kullanım Alanları</h2>
             <ul class="seo-list">
                 ${icerik.kullanim.map(k => `<li>${esc(k)}</li>`).join('\n                ')}
             </ul>
         </div>` : ''}
-
-        ${sssHtml(sss)}
 
         ${benzerHtml}
 
@@ -328,8 +305,7 @@ for (const p of products) {
                 category: cat.name,
                 url: tamUrl(p.detailPage),
                 additionalProperty: specs.filter(s => s.deger).map(s => ({ '@type': 'PropertyValue', name: s.ad, value: s.deger }))
-            },
-            sssLd(sss)
+            }
         ],
         govde
     });
@@ -343,24 +319,23 @@ for (const s of sehirler) {
     // Şehir sayfalarında sadece ana 4 kategori başlık olarak geçer, metinler kısa tutulur;
     // sayfanın çoğu şehre özel yazıdan oluşsun diye (aynı şablon metin Google'da kopya sayfa sayılır)
     const anaKategoriler = ['bukme', 'kesme', 'vibrator', 'benzinli-kompaktor'].filter(k => kategoriUrunleri(k).length > 0);
-    const bolumler = `<div class="seo-block">
-                ${anaKategoriler.map(k => {
-                    const m = sehirKategoriMetni[k](s.ad);
-                    return `<h2>${esc(m.baslik)}</h2>
-                <p><a href="${kategoriUrl(k)}">${esc(categories[k].name)} modellerini incele</a></p>`;
-                }).join('\n                ')}
-                <p>Ayrıca <a href="/vibrator_hortumu/">vibratör hortumu</a>, <a href="/ciroz/">çiroz</a> ve <a href="/el_aletleri/">akülü el aletleri</a> de bulunur.</p>
-            </div>`;
+    const bolumler = `<div class="category-grid bolge-kategoriler">
+                ${anaKategoriler.map(k => `<a href="${kategoriUrl(k)}" class="cat-card">
+                    <img src="/${kategoriUrunleri(k)[0].img}" alt="${esc(categories[k].name)}" loading="lazy">
+                    <div class="cat-info">
+                        <h2>${esc(sehirKategoriMetni[k](s.ad).baslik)}</h2>
+                        <p>${kategoriUrunleri(k).length} model · İncele</p>
+                    </div>
+                </a>`).join('\n                ')}
+            </div>
+            <p>Ayrıca <a href="/vibrator_hortumu/">vibratör hortumu</a>, <a href="/ciroz/">çiroz</a> ve <a href="/el_aletleri/">akülü el aletleri</a> de bulunur.</p>`;
 
     const ilcelerHtml = s.ilceler ? `<div class="seo-block">
-                <h2><i class="fas fa-map-marker-alt"></i> ${esc(s.ad)} ${s.tumIlceler ? 'İlçeleri' : 'İlçelerine Gönderim'}</h2>
-                <p>${s.tumIlceler ? `${esc(s.ad)} genelindeki tüm ilçelere gönderim yapıyoruz:` : `Başta aşağıdaki ilçeler olmak üzere ${esc(s.ad)} genelindeki tüm ilçelere gönderim yapıyoruz:`}</p>
-                <div class="city-links">
-                    ${s.ilceler.map(i => {
-                        const ilceSayfa = sehirSayfasi(i);
-                        return ilceSayfa ? `<a href="/bolgeler/${ilceSayfa.slug}.html">${esc(i)}</a>` : `<span>${esc(i)}</span>`;
-                    }).join('\n                    ')}
-                </div>
+                <h2>${esc(s.ad)} İlçeleri</h2>
+                <p>${esc(s.ad)} genelindeki tüm ilçelere gönderim yapıyoruz: ${s.ilceler.map(i => {
+                    const ilceSayfa = sehirSayfasi(i);
+                    return ilceSayfa ? `<a href="/bolgeler/${ilceSayfa.slug}.html">${esc(i)}</a>` : esc(i);
+                }).join(', ')}.</p>
             </div>` : '';
 
     const sss = [
@@ -425,18 +400,18 @@ sayfa({
             </div>
 
             <div class="seo-block">
-                <h2><i class="fas fa-map-marked-alt"></i> Bölge Sayfaları</h2>
-                <div class="city-links">
-                    ${sehirler.map(s => `<a href="/bolgeler/${s.slug}.html">${esc(s.ad)}</a>`).join('\n                    ')}
-                </div>
+                <h2>Düzenli Olarak Gittiğimiz Bölgeler</h2>
+                <ul class="bolge-liste">
+                    ${sehirler.map(s => `<li><a href="/bolgeler/${s.slug}.html">${esc(s.ad)}${s.ust ? ` (${esc(s.ust)})` : ''}</a> <span>· Bursa'ya ${s.mesafe ? `yaklaşık ${s.mesafe} km` : 'merkez'}</span></li>`).join('\n                    ')}
+                </ul>
             </div>
 
             <div class="seo-block">
-                <h2><i class="fas fa-truck"></i> Gönderim Yaptığımız İller</h2>
+                <h2>Gönderim Yaptığımız İller</h2>
                 <p>Aşağıdaki tüm illere gönderim yapıyoruz. Gönderim şekli ve süresi için WhatsApp'tan bilgi alabilirsiniz.</p>
-                <div class="city-links">
-                    ${tumIller.map(il => { const sp = sehirSayfasi(il); return sp ? `<a href="/bolgeler/${sp.slug}.html">${esc(il)}</a>` : `<span>${esc(il)}</span>`; }).join('\n                    ')}
-                </div>
+                <ul class="il-liste">
+                    ${tumIller.map(il => `<li>${esc(il)}</li>`).join('\n                    ')}
+                </ul>
             </div>
 
             ${iletisimKutusu('Merhaba, bulunduğum şehre gönderim ve fiyat hakkında bilgi almak istiyorum.')}
