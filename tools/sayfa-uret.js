@@ -32,7 +32,6 @@ const organizasyonLd = {
     '@id': `${firma.site}/#organization`,
     name: firma.ad,
     url: `${firma.site}/`,
-    logo: `${firma.site}/images/logo.png`,
     telephone: firma.telefon,
     email: firma.email,
     areaServed: { '@type': 'Country', name: 'Türkiye' },
@@ -73,8 +72,6 @@ function sayfa({ dosya, title, description, gorsel, jsonLd, yol, govde, gorselle
     <meta name="description" content="${esc(description)}">
     <meta name="robots" content="index, follow, max-image-preview:large">
     <link rel="canonical" href="${canonical}">
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="icon" href="/images/logo.png" type="image/png">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="tr_TR">
     <meta property="og:site_name" content="${firma.ad}">
