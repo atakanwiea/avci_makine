@@ -26,7 +26,7 @@ function renderHeader() {
     <header>
         <div class="container navbar">
             <div class="navbar-brand">
-                <div class="logo"><a href="/">AVCI <span class="insaat">MAKİNE</span></a></div>
+                <div class="logo"><a href="/" class="brand-logo"><span class="brand-chip"><img src="/images/logo-avci.png" alt="Avcı" width="104" height="32"></span><span class="brand-sub">İnşaat Makine ve<br>Teknik Servis</span></a></div>
                 <div class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></div>
             </div>
             
@@ -64,7 +64,7 @@ function renderFooter() {
     <footer id="footer-iletisim">
         <div class="container footer-row">
             <div class="footer-col">
-                <h3>AVCI <span class="insaat">MAKİNE</span></h3>
+                <h3>Avcı İnşaat Makine ve Teknik Servis</h3>
                 <p>İnşaat sektöründe güvenilir çözüm ortağınız. Kaliteli ekipman, zamanında teslimat.</p>
             </div>
             <div class="footer-col">
@@ -88,7 +88,7 @@ function renderFooter() {
             </div>
         </div>
         <div class="copyright">
-            <p>&copy; ${new Date().getFullYear()} Avcı Makine İnşaat. Tüm Hakları Saklıdır.</p>
+            <p>&copy; ${new Date().getFullYear()} Avcı İnşaat Makine ve Teknik Servis. Tüm Hakları Saklıdır.</p>
         </div>
     </footer>
     `;

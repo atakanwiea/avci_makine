@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Yeni tasarım butonları
         if(phoneBtn) phoneBtn.href = `tel:${TELEFON_NUMARASI}`;
-        if(whatsappBtn) whatsappBtn.href = `https://wa.me/${WHATSAPP_NUMARASI}?text=Merhaba AVCI MAKİNE İNŞAAT, ürünleriniz hakkında bilgi almak istiyorum.`;
+        if(whatsappBtn) whatsappBtn.href = `https://wa.me/${WHATSAPP_NUMARASI}?text=Merhaba Avcı İnşaat Makine ve Teknik Servis, ürünleriniz hakkında bilgi almak istiyorum.`;
     }
 
     // Hızlı aksiyon butonları güncelle (Yeni iletişim sayfası için)
@@ -227,7 +227,7 @@ function renderProductDetail() {
     }
     
     // SEO Güncellemeleri
-    document.title = `${product.name} - AVCI MAKİNE İNŞAAT`;
+    document.title = `${product.name} - Avcı İnşaat Makine ve Teknik Servis`;
     const metaDesc = document.querySelector('meta[name="description"]');
     if(metaDesc) {
         metaDesc.setAttribute('content', `${product.name} - ${product.desc}`);
@@ -387,7 +387,7 @@ const modal = document.getElementById('product-modal');
 
 // WhatsApp Otomatik Mesaj Sistemi
 function sendWhatsAppMessage() {
-    const message = "Merhaba Avcı Makine İnşaat,\n\nİnşaat makineleri hakkında bilgi almak istiyorum. Beni arayabilir misiniz?\n\nTeşekkürler.";
+    const message = "Merhaba Avcı İnşaat Makine ve Teknik Servis,\n\nİnşaat makineleri hakkında bilgi almak istiyorum. Beni arayabilir misiniz?\n\nTeşekkürler.";
     const encodedMessage = encodeURIComponent(message);
     const phoneNumber = "905367281833";
     window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
@@ -395,7 +395,7 @@ function sendWhatsAppMessage() {
 
 // Ürün odaklı WhatsApp mesajı (modal'dan çağrılacak)
 function sendProductWhatsApp(productName) {
-    const message = `Merhaba Avcı Makine İnşaat,\n\n"${productName}" hakkında detaylı bilgi almak istiyorum.\n\nFiyat, teknik özellikler ve teslimat süresi konularında bilgi verebilir misiniz?\n\nTeşekkürler.`;
+    const message = `Merhaba Avcı İnşaat Makine ve Teknik Servis,\n\n"${productName}" hakkında detaylı bilgi almak istiyorum.\n\nFiyat, teknik özellikler ve teslimat süresi konularında bilgi verebilir misiniz?\n\nTeşekkürler.`;
     const encodedMessage = encodeURIComponent(message);
     const phoneNumber = "905367281833";
     window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');

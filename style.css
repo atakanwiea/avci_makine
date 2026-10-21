@@ -1352,3 +1352,9 @@ a.category-tag { display: inline-block; }
     .seo-page .p-card h3, .seo-block .p-card h3 { font-size: 0.95rem; }
     .seo-page .p-info, .seo-block .p-info { padding: 10px; }
 }
+
+/* Kartvizitteki Avcı logosu (header) */
+.brand-logo { display: flex; align-items: center; gap: 10px; }
+.brand-chip { background: #fff; border-radius: 6px; padding: 5px 10px; display: flex; align-items: center; }
+.brand-chip img { height: 32px; width: auto; display: block; }
+.brand-sub { font-size: 0.8rem; font-weight: 600; line-height: 1.2; letter-spacing: 0; color: #fff; }
