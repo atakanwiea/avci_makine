@@ -143,33 +143,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Sayfa yüklendiğinde telefon numaralarını güncelle
     updatePhoneNumbers();
     
-    // Mobil Menü
-    const menuToggle = document.getElementById('mobile-menu');
-    const navList = document.getElementById('nav-list');
-    if(menuToggle) {
-        menuToggle.addEventListener('click', () => {
-            navList.classList.toggle('active');
-        });
-    }
-    
-    // Dropdown Click Event (hover yerine)
-    const dropdownToggle = document.querySelector('.dropdown-toggle');
-    const dropdown = document.querySelector('.dropdown');
-    
-    if(dropdownToggle && dropdown) {
-        dropdownToggle.addEventListener('click', (e) => {
-            e.preventDefault();
-            dropdown.classList.toggle('active');
-        });
-        
-        // Dışarı tıklanınca kapat
-        document.addEventListener('click', (e) => {
-            if (!dropdown.contains(e.target)) {
-                dropdown.classList.remove('active');
-            }
-        });
-    }
-    
+    // Mobil menü ve dropdown olayları components.js içindeki initMenuEvents() ile bağlanıyor
+
     // Mobil Kategoriler Toggle
     const mobileCategoriesToggle = document.getElementById('mobile-categories-toggle');
     const mobileCategoriesList = document.getElementById('mobile-categories-list');
@@ -218,16 +193,27 @@ function filterProducts(category) {
     if(activeBtn) activeBtn.classList.add('active');
 
     // Başlık güncelle
-    if(category === 'hepsi') header.innerText = "Tüm Ürün Kataloğu";
-    else if(category === 'bukme') header.innerText = "Demir Bükme Makineleri";
-    else if(category === 'kesme') header.innerText = "Demir Kesme Makineleri";
-    else if(category === 'vibrator') header.innerText = "Beton Vibratörleri";
-    else if(category === 'diger') header.innerText = "Diğer Ekipmanlar";
+    const categoryTitles = {
+        'hepsi': "Tüm Ürün Kataloğu",
+        'bukme': "Demir Bükme Makineleri",
+        'kesme': "Demir Kesme Makineleri",
+        'vibrator': "Beton Vibratörleri",
+        'vibrator-hortum': "Beton Vibratör Hortumları",
+        'asfalt-kesme': "Asfalt Kesme Makineleri",
+        'benzinli-kompaktor': "Benzinli Kompaktörler",
+        'ciroz': "Çiroz",
+        'el-aletleri': "El Aletleri",
+        'diger': "Diğer Ekipmanlar"
+    };
+    header.innerText = categoryTitles[category] || "Tüm Ürün Kataloğu";
 
     // Filtreleme
     let filteredData;
     if(category === 'hepsi') {
         filteredData = products;
+    } else if(category === 'diger') {
+        // Ana kategoriler (bükme, kesme, vibratör) dışındaki tüm ürünler
+        filteredData = products.filter(p => !['bukme', 'kesme', 'vibrator'].includes(p.category));
     } else {
         filteredData = products.filter(p => p.category === category);
     }
@@ -376,15 +362,15 @@ function renderProductDetail() {
                 <div class="advantages-grid">
                     <div class="advantage-item">
                         <i class="fas fa-shipping-fast"></i>
-                        <span>Hızlı Teslimat</span>
+                        <span>Türkiye Geneli Teslimat</span>
                     </div>
                     <div class="advantage-item">
                         <i class="fas fa-tools"></i>
                         <span>Ücretsiz Destek</span>
                     </div>
                     <div class="advantage-item">
-                        <i class="fas fa-shield-alt"></i>
-                        <span>2 Yıl Garanti</span>
+                        <i class="fab fa-whatsapp"></i>
+                        <span>WhatsApp'tan Hızlı Fiyat</span>
                     </div>
                 </div>
             </div>
@@ -406,7 +392,7 @@ function renderProductDetail() {
             <div id="description" class="tab-content active">
                 <h3>${product.name} Detayları</h3>
                 <p>${product.desc}</p>
-                <p>Türkiye'nin her yerine hızlı teslimat ve kurulum imkanı. Detaylı bilgi için bizimle iletişime geçebilirsiniz.</p>
+                <p>Türkiye'nin her yerine teslimat imkanı. Detaylı bilgi için bizimle iletişime geçebilirsiniz.</p>
             </div>
 
             <div id="specifications" class="tab-content">
