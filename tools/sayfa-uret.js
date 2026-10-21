@@ -31,7 +31,6 @@ const organizasyonLd = {
     '@type': 'Organization',
     '@id': `${firma.site}/#organization`,
     name: firma.ad,
-    alternateName: ['Avcı İnşaat Makine', 'Avcı Makine'],
     url: `${firma.site}/`,
     logo: `${firma.site}/images/logo.png`,
     telephone: firma.telefon,
@@ -288,7 +287,7 @@ for (const p of products) {
         <div class="seo-block">
             <h2><i class="fas fa-info-circle"></i> ${esc(p.name)} Hakkında</h2>
             <p>${esc(p.name)}, ${esc(p.brand)} markasının ${esc(cat.short.toLocaleLowerCase('tr'))} modellerinden biridir. ${esc(p.desc)}</p>
-            <p>Avcı İnşaat Makine olarak ${esc(p.name)} modelini Bursa'dan Türkiye'nin her yerine gönderiyoruz. Diğer modellerle karşılaştırmak için <a href="${kategoriUrl(p.category)}">${esc(cat.name)}</a> sayfamıza göz atabilirsiniz.</p>
+            <p>Avcı Makine olarak ${esc(p.name)} modelini Bursa'dan Türkiye'nin her yerine gönderiyoruz. Diğer modellerle karşılaştırmak için <a href="${kategoriUrl(p.category)}">${esc(cat.name)}</a> sayfamıza göz atabilirsiniz.</p>
         </div>
 
         <div class="seo-block">
@@ -315,7 +314,7 @@ for (const p of products) {
 
     sayfa({
         dosya: p.detailPage,
-        title: `${p.name} Fiyatı ve Özellikleri | Avcı İnşaat Makine`,
+        title: `${p.name} Fiyatı ve Özellikleri | Avcı Makine`,
         description: `${p.name}: ${p.desc} Türkiye geneli teslimat. Fiyat için WhatsApp: ${firma.telefonGorunen}.`,
         gorsel: p.img,
         yol: [{ ad: 'Ana Sayfa', url: '/' }, { ad: cat.short, url: kategoriUrl(p.category) }, { ad: p.name, url: `/${p.detailPage}` }],
@@ -398,7 +397,7 @@ for (const s of sehirler) {
 
     sayfa({
         dosya: `bolgeler/${s.slug}.html`,
-        title: `${s.ad} Beton Vibratörü, Demir Bükme ve Demir Kesme Makinesi | Avcı İnşaat Makine`,
+        title: `${s.ad} Beton Vibratörü, Demir Bükme ve Demir Kesme Makinesi | Avcı Makine`,
         description: `${s.ad} inşaat vibratörü (beton vibratörü), demir bükme makinesi, demir kesme makinesi ve kompaktör. Bursa'dan ${s.ad} için gönderim. WhatsApp'tan fiyat: ${firma.telefonGorunen}.`,
         gorsel: products.find(p => p.category === 'vibrator').img,
         yol,
@@ -413,8 +412,8 @@ for (const s of sehirler) {
 // Hizmet bölgeleri ana sayfası
 sayfa({
     dosya: 'bolgeler/index.html',
-    title: 'Hizmet Bölgeleri - Türkiye\'nin 81 İline İnşaat Makinesi Gönderimi | Avcı İnşaat Makine',
-    description: 'Avcı İnşaat Makine, Bursa\'dan Türkiye\'nin 81 iline demir bükme, demir kesme makinesi, beton vibratörü ve kompaktör gönderir. İstanbul, İzmir, Ankara, Eskişehir, Balıkesir, Yalova ve tüm iller.',
+    title: 'Hizmet Bölgeleri - Türkiye\'nin 81 İline İnşaat Makinesi Gönderimi | Avcı Makine',
+    description: 'Avcı Makine, Bursa\'dan Türkiye\'nin 81 iline demir bükme, demir kesme makinesi, beton vibratörü ve kompaktör gönderir. İstanbul, İzmir, Ankara, Eskişehir, Balıkesir, Yalova ve tüm iller.',
     gorsel: products[0].img,
     yol: [{ ad: 'Ana Sayfa', url: '/' }, { ad: 'Hizmet Bölgeleri', url: '/bolgeler/' }],
     jsonLd: [{ '@type': 'CollectionPage', name: 'Hizmet Bölgeleri', url: tamUrl('bolgeler/') }],
@@ -422,7 +421,7 @@ sayfa({
         <div class="container">
             <div class="seo-hero">
                 <h1>Hizmet Bölgelerimiz</h1>
-                <p>Avcı İnşaat Makine ve Teknik Servis, Bursa Nilüfer'den Türkiye'nin 81 iline demir bükme makinesi, demir kesme makinesi, beton vibratörü, vibratör hortumu, kompaktör ve çiroz gönderir. Bulunduğunuz şehri seçerek o bölgeye özel bilgilere ulaşabilirsiniz.</p>
+                <p>Avcı Makine İnşaat, Bursa Nilüfer'den Türkiye'nin 81 iline demir bükme makinesi, demir kesme makinesi, beton vibratörü, vibratör hortumu, kompaktör ve çiroz gönderir. Bulunduğunuz şehri seçerek o bölgeye özel bilgilere ulaşabilirsiniz.</p>
             </div>
 
             <div class="seo-block">

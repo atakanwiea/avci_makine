@@ -3,7 +3,7 @@
 // tools/sayfa-uret.js bu dosyayı okuyup HTML sayfalarını üretir.
 
 const firma = {
-    ad: 'Avcı İnşaat Makine ve Teknik Servis',
+    ad: 'Avcı Makine İnşaat',
     site: 'https://avcimakine.com',
     telefon: '+905367281833',
     telefonGorunen: '0536 728 18 33',
@@ -16,12 +16,12 @@ const firma = {
 // Kategori sayfaları: başlık, açıklama, uzun metin, SSS ve ürün sayfalarında kullanılan "kullanım alanları"
 const kategoriIcerik = {
     'bukme': {
-        title: 'Demir Bükme Makinesi Fiyatları ve Modelleri | Avcı İnşaat Makine',
+        title: 'Demir Bükme Makinesi Fiyatları ve Modelleri | Avcı Makine',
         description: 'İnşaat demiri bükme makinesi modelleri: Afacan ve Yakar 18, 20, 22, 24 mm demir bükme makineleri. Bursa merkezli, Türkiye geneli teslimat. WhatsApp\'tan hızlı fiyat alın.',
         h1: 'Demir Bükme Makinesi',
         intro: [
             'Demir bükme makinesi, inşaat demirini (nervürlü betonarme çeliği) istenen açıda ve ölçüde bükmek için kullanılır. Şantiyede etriye, kanca, filiz ve pilye gibi donatı parçalarının elle uğraşmadan, hızlı ve hep aynı ölçüde hazırlanmasını sağlar.',
-            'Avcı İnşaat Makine olarak Afacan ve Yakar markalarının 18 mm\'den 24 mm\'ye kadar farklı kapasitelerdeki demir bükme makinelerini satıyoruz. Bursa\'dan Türkiye\'nin her iline gönderim yapıyoruz; güncel fiyat ve stok bilgisi için WhatsApp\'tan yazmanız yeterli.'
+            'Avcı Makine olarak Afacan ve Yakar markalarının 18 mm\'den 24 mm\'ye kadar farklı kapasitelerdeki demir bükme makinelerini satıyoruz. Bursa\'dan Türkiye\'nin her iline gönderim yapıyoruz; güncel fiyat ve stok bilgisi için WhatsApp\'tan yazmanız yeterli.'
         ],
         rehber: [
             { baslik: 'Demir bükme makinesi seçerken nelere bakılmalı?', maddeler: [
@@ -41,12 +41,12 @@ const kategoriIcerik = {
         ]
     },
     'kesme': {
-        title: 'Demir Kesme Makinesi Fiyatları ve Modelleri | Avcı İnşaat Makine',
+        title: 'Demir Kesme Makinesi Fiyatları ve Modelleri | Avcı Makine',
         description: 'Hidrolik ve portatif demir kesme makinesi: Afacan 22 mm ve F24 24 mm inşaat demiri kesme makineleri. 220V monofaze. Türkiye geneli teslimat, WhatsApp\'tan fiyat alın.',
         h1: 'Demir Kesme Makinesi',
         intro: [
             'Demir kesme makinesi, inşaat demirini taşlamaya ya da oksijene gerek kalmadan, temiz ve hızlı şekilde istenen boyda kesmek için kullanılır. Şantiyede donatı hazırlarken en çok zaman kazandıran makinelerden biridir.',
-            'Avcı İnşaat Makine\'de Afacan marka 22 mm ve 24 mm kapasiteli, 220V monofaze çalışan portatif demir kesme makineleri bulunur. Türkiye\'nin her yerine gönderim yapıyoruz.'
+            'Avcı Makine\'de Afacan marka 22 mm ve 24 mm kapasiteli, 220V monofaze çalışan portatif demir kesme makineleri bulunur. Türkiye\'nin her yerine gönderim yapıyoruz.'
         ],
         rehber: [
             { baslik: 'Demir kesme makinesi seçerken nelere bakılmalı?', maddeler: [
@@ -65,12 +65,12 @@ const kategoriIcerik = {
         ]
     },
     'vibrator': {
-        title: 'Beton Vibratörü (İnşaat Vibratörü) Fiyatları | Avcı İnşaat Makine',
+        title: 'Beton Vibratörü (İnşaat Vibratörü) Fiyatları | Avcı Makine',
         description: 'Beton vibratörü ve inşaat vibratörü modelleri: Wacker Neuson M-1500, M-2500 ve Enar KMS 180 vibratör motorları, hortum ve şişeler. Türkiye geneli teslimat, WhatsApp\'tan fiyat.',
         h1: 'Beton Vibratörü (İnşaat Vibratörü)',
         intro: [
             'Beton vibratörü, halk arasında inşaat vibratörü ya da beton titreşim makinesi olarak da bilinir. Kalıba dökülen taze betonun içindeki hava boşluklarını alır, betonun donatının etrafını tamamen sarmasını ve kalıbı eksiksiz doldurmasını sağlar. Böylece daha sağlam, boşluksuz ve düzgün yüzeyli beton elde edilir.',
-            'Bir beton vibratörü genellikle üç parçadan oluşur: <strong>vibratör motoru</strong>, motoru şişeye bağlayan <strong>vibratör hortumu</strong> ve betonun içine daldırılan <strong>şişe</strong>. Avcı İnşaat Makine\'de Wacker Neuson ve Enar marka vibratör motorları ile uyumlu hortumları bulabilirsiniz.'
+            'Bir beton vibratörü genellikle üç parçadan oluşur: <strong>vibratör motoru</strong>, motoru şişeye bağlayan <strong>vibratör hortumu</strong> ve betonun içine daldırılan <strong>şişe</strong>. Avcı Makine\'de Wacker Neuson ve Enar marka vibratör motorları ile uyumlu hortumları bulabilirsiniz.'
         ],
         rehber: [
             { baslik: 'Beton vibratörü seçerken nelere bakılmalı?', maddeler: [
@@ -91,12 +91,12 @@ const kategoriIcerik = {
         ]
     },
     'vibrator-hortum': {
-        title: 'Beton Vibratör Hortumu ve Şişesi | Avcı İnşaat Makine',
+        title: 'Beton Vibratör Hortumu ve Şişesi | Avcı Makine',
         description: 'Wacker Neuson uyumlu 4 metre ve 5 metre beton vibratör hortumları, Ø45 mm şişe. Kare başlı pimli motor girişi. Türkiye geneli teslimat, WhatsApp\'tan fiyat alın.',
         h1: 'Beton Vibratör Hortumu',
         intro: [
             'Beton vibratör hortumu, vibratör motorunun gücünü betonun içine daldırılan şişeye ileten parçadır. Şişe betonun içinde titreşerek hava boşluklarını alır. Hortum ve şişe, vibratörde en çok yıpranan ve en sık yenilenen parçalardır.',
-            'Avcı İnşaat Makine\'de 4 metre ve 5 metre uzunluğunda, Ø45 mm şişe çaplı, kare başlı pimli motor girişine sahip Wacker Neuson vibratör hortumları bulunur.'
+            'Avcı Makine\'de 4 metre ve 5 metre uzunluğunda, Ø45 mm şişe çaplı, kare başlı pimli motor girişine sahip Wacker Neuson vibratör hortumları bulunur.'
         ],
         rehber: [
             { baslik: 'Vibratör hortumu seçerken nelere bakılmalı?', maddeler: [
@@ -113,12 +113,12 @@ const kategoriIcerik = {
         ]
     },
     'benzinli-kompaktor': {
-        title: 'Benzinli Kompaktör (Zemin Sıkıştırma) Fiyatları | Avcı İnşaat Makine',
+        title: 'Benzinli Kompaktör (Zemin Sıkıştırma) Fiyatları | Avcı Makine',
         description: 'Benzinli kompaktör modelleri: Wacker Neuson MP-12, MP-15, Honda KM-60 ve Afacan 6HP zemin sıkıştırma makineleri. Türkiye geneli teslimat, WhatsApp\'tan fiyat alın.',
         h1: 'Benzinli Kompaktör',
         intro: [
             'Kompaktör, zemini, dolguyu ve asfaltı titreşimle sıkıştırmak için kullanılan bir makinedir. Temel altı dolgusu, kilit parke taşı döşemesi, bahçe ve yol çalışmaları gibi işlerde zeminin oturmasını ve sonradan çökmemesini sağlar.',
-            'Avcı İnşaat Makine\'de Wacker Neuson, Honda ve Afacan marka benzinli kompaktörler bulunur. Elektriğin olmadığı açık alanlarda da rahatça çalışırlar.'
+            'Avcı Makine\'de Wacker Neuson, Honda ve Afacan marka benzinli kompaktörler bulunur. Elektriğin olmadığı açık alanlarda da rahatça çalışırlar.'
         ],
         rehber: [
             { baslik: 'Kompaktör seçerken nelere bakılmalı?', maddeler: [
@@ -138,12 +138,12 @@ const kategoriIcerik = {
         ]
     },
     'ciroz': {
-        title: 'Çiroz (Kalıp Kilidi) Fiyatı - Afacan 4 mm Çiroz | Avcı İnşaat Makine',
+        title: 'Çiroz (Kalıp Kilidi) Fiyatı - Afacan 4 mm Çiroz | Avcı Makine',
         description: 'Afacan 4 mm galvaniz ve toz boyalı çiroz kalıp kilidi. 50\'li çuval, 20 kg. Kalıp sıkma işleri için. Türkiye geneli teslimat, WhatsApp\'tan fiyat alın.',
         h1: 'Çiroz (Kalıp Kilidi)',
         intro: [
             'Çiroz, beton kalıplarını birbirine sıkıca bağlamak ve beton dökümü sırasında kalıbın açılmasını önlemek için kullanılan bir kalıp kilididir. Özellikle kolon, kiriş ve perde kalıplarında kullanılır.',
-            'Avcı İnşaat Makine\'de Afacan marka 4 mm kalınlığında, galvaniz kaplamalı ve toz boyalı çirozlar 50 adetlik çuvallar halinde bulunur.'
+            'Avcı Makine\'de Afacan marka 4 mm kalınlığında, galvaniz kaplamalı ve toz boyalı çirozlar 50 adetlik çuvallar halinde bulunur.'
         ],
         rehber: [
             { baslik: 'Çiroz alırken nelere dikkat edilmeli?', maddeler: [
@@ -160,12 +160,12 @@ const kategoriIcerik = {
         ]
     },
     'el-aletleri': {
-        title: 'Akülü El Aletleri ve Matkap Seti | Avcı İnşaat Makine',
+        title: 'Akülü El Aletleri ve Matkap Seti | Avcı Makine',
         description: 'Kimmer Plus 21V 5\'li akülü matkap seti: kırıcı delici, taşlama, somun sıkma, vidalama ve budama testeresi. 2 akü, çanta dahil. Türkiye geneli teslimat.',
         h1: 'El Aletleri',
         intro: [
             'Şantiyede, atölyede ve tadilat işlerinde en çok ihtiyaç duyulan el aletlerini tek bir sette toplamak hem maliyet hem de taşıma kolaylığı sağlar. Ortak akü kullanan setlerde aynı aküyle birden fazla alet çalıştırılabilir.',
-            'Avcı İnşaat Makine\'de Kimmer Plus 21V 5\'li akülü set; kırıcı delici, taşlama, somun sıkma, vidalama ve budama testeresini bir arada sunar.'
+            'Avcı Makine\'de Kimmer Plus 21V 5\'li akülü set; kırıcı delici, taşlama, somun sıkma, vidalama ve budama testeresini bir arada sunar.'
         ],
         rehber: [
             { baslik: 'Akülü alet seti alırken nelere bakılmalı?', maddeler: [
@@ -187,7 +187,7 @@ const kategoriIcerik = {
 const sehirler = [
     {
         slug: 'bursa', ad: 'Bursa', mesafe: null,
-        giris: 'Avcı İnşaat Makine ve Teknik Servis, Bursa Nilüfer\'den hizmet veren bir inşaat makineleri tedarikçisidir. Bursa\'nın merkez ilçelerinden İnegöl\'e, Gemlik\'ten Mustafakemalpaşa\'ya kadar tüm şantiyelere demir bükme makinesi, demir kesme makinesi, beton vibratörü ve kompaktör tedarik ediyoruz.',
+        giris: 'Avcı Makine İnşaat, Bursa Nilüfer\'den hizmet veren bir inşaat makineleri tedarikçisidir. Bursa\'nın merkez ilçelerinden İnegöl\'e, Gemlik\'ten Mustafakemalpaşa\'ya kadar tüm şantiyelere demir bükme makinesi, demir kesme makinesi, beton vibratörü ve kompaktör tedarik ediyoruz.',
         detay: 'Bursa\'da hızla büyüyen konut projeleri, organize sanayi bölgeleri ve kentsel dönüşüm çalışmaları; donatı hazırlama ve beton dökümü için güvenilir makinelere olan ihtiyacı artırıyor. Bursa içindeki müşterilerimiz ürünler hakkında bizimle doğrudan görüşebilir, telefonla ya da WhatsApp\'tan hızlıca fiyat alabilir.',
         ilceler: ['Osmangazi', 'Nilüfer', 'Yıldırım', 'İnegöl', 'Gemlik', 'Mudanya', 'Mustafakemalpaşa', 'Karacabey', 'Orhangazi', 'İznik', 'Yenişehir', 'Gürsu', 'Kestel', 'Orhaneli', 'Keles', 'Büyükorhan', 'Harmancık'],
         tumIlceler: true
