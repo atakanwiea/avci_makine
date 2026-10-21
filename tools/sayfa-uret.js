@@ -32,6 +32,7 @@ const organizasyonLd = {
     '@id': `${firma.site}/#organization`,
     name: firma.ad,
     url: `${firma.site}/`,
+    logo: `${firma.site}/images/logo.png`,
     telephone: firma.telefon,
     email: firma.email,
     areaServed: { '@type': 'Country', name: 'Türkiye' },
@@ -81,6 +82,7 @@ function sayfa({ dosya, title, description, gorsel, jsonLd, yol, govde, gorselle
     <meta property="og:image" content="${ogGorsel}">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="${ogGorsel}">
+    <link rel="icon" href="/images/favicon.png" type="image/png">
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script type="application/ld+json">${JSON.stringify(ld)}</script>
