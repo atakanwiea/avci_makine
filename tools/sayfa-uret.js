@@ -140,7 +140,7 @@ function iletisimKutusu(mesaj) {
 function bolgeLinkleri(haric) {
     return `<div class="seo-block">
                 <h2><i class="fas fa-map-marked-alt"></i> Hizmet Bölgelerimiz</h2>
-                <p>Bursa'dan Türkiye'nin 81 iline gönderim yapıyoruz. En sık gönderim yaptığımız bölgeler:</p>
+                <p>Bursa'dan Türkiye'nin 81 iline gönderim yapıyoruz. Düzenli olarak bizzat gittiğimiz bölgeler:</p>
                 <div class="city-links">
                     ${sehirler.filter(s => s.slug !== haric).map(s => `<a href="/bolgeler/${s.slug}.html">${esc(s.ad)}</a>`).join('\n                    ')}
                     <a href="/bolgeler/">Tüm iller</a>
@@ -340,16 +340,17 @@ for (const s of sehirler) {
     const doluKategoriler = Object.keys(categories).filter(k => kategoriUrunleri(k).length > 0);
     const ustSayfa = s.ust ? sehirSayfasi(s.ust) : null;
 
-    const bolumler = doluKategoriler.map(k => {
-        const m = sehirKategoriMetni[k](s.ad);
-        return `<div class="seo-block">
-                <h2>${esc(m.baslik)}</h2>
-                <p>${esc(m.metin)} <a href="${kategoriUrl(k)}">Tüm ${esc(categories[k].name.toLocaleLowerCase('tr'))}</a></p>
-                <div class="product-grid">
-                    ${kategoriUrunleri(k).map(urunKarti).join('\n                    ')}
-                </div>
+    // Şehir sayfalarında sadece ana 4 kategori başlık olarak geçer, metinler kısa tutulur;
+    // sayfanın çoğu şehre özel yazıdan oluşsun diye (aynı şablon metin Google'da kopya sayfa sayılır)
+    const anaKategoriler = ['bukme', 'kesme', 'vibrator', 'benzinli-kompaktor'].filter(k => kategoriUrunleri(k).length > 0);
+    const bolumler = `<div class="seo-block">
+                ${anaKategoriler.map(k => {
+                    const m = sehirKategoriMetni[k](s.ad);
+                    return `<h2>${esc(m.baslik)}</h2>
+                <p><a href="${kategoriUrl(k)}">${esc(categories[k].name)} modellerini incele</a></p>`;
+                }).join('\n                ')}
+                <p>Ayrıca <a href="/vibrator_hortumu/">vibratör hortumu</a>, <a href="/ciroz/">çiroz</a> ve <a href="/el_aletleri/">akülü el aletleri</a> de bulunur.</p>
             </div>`;
-    }).join('\n\n            ');
 
     const ilcelerHtml = s.ilceler ? `<div class="seo-block">
                 <h2><i class="fas fa-map-marker-alt"></i> ${esc(s.ad)} ${s.tumIlceler ? 'İlçeleri' : 'İlçelerine Gönderim'}</h2>
@@ -363,10 +364,8 @@ for (const s of sehirler) {
             </div>` : '';
 
     const sss = [
-        { q: `${s.ad} için demir bükme makinesi, demir kesme makinesi ve beton vibratörü gönderiyor musunuz?`, a: `Evet. Demir bükme, demir kesme, beton vibratörü, vibratör hortumu, kompaktör ve çiroz dahil tüm ürünlerimizi Bursa'dan ${s.ad} adresinize gönderiyoruz.` },
         { q: `${s.ad} için fiyat nasıl alırım?`, a: `${firma.telefonGorunen} numarasından WhatsApp'tan ürün adını yazmanız yeterli; güncel fiyat ve gönderim bilgisini hemen iletelim.` },
-        ...(s.mesafe ? [{ q: `Bursa ile ${s.ad} arası ne kadar?`, a: `Bursa ile ${s.ad} arası karayoluyla yaklaşık ${s.mesafe} km.` }] : []),
-        { q: `${s.ad} için hangi inşaat makineleri var?`, a: `${doluKategoriler.map(k => categories[k].short).join(', ')} kategorilerinde Afacan, Yakar, Wacker Neuson, Enar ve Honda marka ürünler.` }
+        ...(s.mesafe ? [{ q: `Bursa ile ${s.ad} arası ne kadar?`, a: `Bursa ile ${s.ad} arası karayoluyla yaklaşık ${s.mesafe} km. ${s.ad} bölgesine düzenli olarak bizzat geliyoruz.` }] : [])
     ];
 
     const konum = s.ust ? `${s.ad} (${s.ust})` : s.ad;
@@ -377,6 +376,7 @@ for (const s of sehirler) {
                 <p class="seo-subtitle">${esc(konum)} için demir bükme makinesi, demir kesme makinesi, beton vibratörü (inşaat vibratörü) ve kompaktör</p>
                 <p>${esc(s.giris)}</p>
                 <p>${esc(s.detay)}</p>
+                <p><strong>${esc(s.ad)} bölgesine Bursa'dan düzenli olarak bizzat geliyoruz.</strong> Ürün ve gönderim bilgisi için WhatsApp'tan yazabilirsiniz.</p>
             </div>
 
             ${iletisimKutusu(`Merhaba, ${s.ad} için inşaat makineleri hakkında fiyat bilgisi almak istiyorum.`)}
@@ -387,7 +387,7 @@ for (const s of sehirler) {
 
             ${sssHtml(sss)}
 
-            ${bolgeLinkleri(s.slug)}
+            <p><a href="/bolgeler/">Diğer hizmet bölgelerimiz</a></p>
         </div>
     </section>`;
 
@@ -470,7 +470,7 @@ const llms = `# ${firma.ad}
 - E-posta: ${firma.email}
 - Konum: ${firma.konum}
 - Çalışma saatleri: ${firma.calismaSaatleri}
-- Hizmet bölgesi: Türkiye geneli (81 il). Sık gönderim yapılan yerler: ${sehirler.map(s => s.ad).join(', ')}
+- Hizmet bölgesi: Türkiye geneli (81 il) gönderim. Düzenli olarak bizzat gidilen bölgeler: ${sehirler.map(s => s.ad).join(', ')}
 - Markalar: ${[...new Set(products.map(p => p.brand))].join(', ')}
 
 ## Ürün kategorileri

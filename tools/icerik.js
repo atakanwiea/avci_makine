@@ -193,24 +193,10 @@ const sehirler = [
         tumIlceler: true
     },
     {
-        slug: 'istanbul', ad: 'İstanbul', mesafe: 155,
-        giris: 'İstanbul\'daki şantiyeler için demir bükme, demir kesme, beton vibratörü ve kompaktör ihtiyacınızı Bursa\'dan karşılıyoruz. Osmangazi Köprüsü ile Bursa ve İstanbul arası yaklaşık 155 km olduğu için İstanbul, en sık gönderim yaptığımız şehirlerden biri.',
-        detay: 'İstanbul\'da süren kentsel dönüşüm projeleri ve yoğun konut inşaatları, hem Avrupa hem de Anadolu yakasında donatı ve beton dökümü makinelerine sürekli bir talep oluşturuyor. Kalıpçı, demirci ve müteahhit ekipleri için makinelerimizi İstanbul\'un tüm ilçelerine gönderiyoruz.',
-        ilceler: ['Esenyurt', 'Başakşehir', 'Beylikdüzü', 'Arnavutköy', 'Büyükçekmece', 'Silivri', 'Küçükçekmece', 'Avcılar', 'Eyüpsultan', 'Sarıyer', 'Pendik', 'Tuzla', 'Kartal', 'Maltepe', 'Ümraniye', 'Ataşehir', 'Sancaktepe', 'Çekmeköy', 'Sultanbeyli', 'Üsküdar', 'Kadıköy'],
-        tumIlceler: false
-    },
-    {
         slug: 'kocaeli', ad: 'Kocaeli', mesafe: 135,
-        giris: 'Kocaeli\'deki inşaat ve sanayi projeleri için inşaat makinelerini Bursa\'dan gönderiyoruz. Bursa ile İzmit arası karayoluyla yaklaşık 135 km.',
-        detay: 'Gebze, Dilovası ve İzmit çevresindeki sanayi tesisleri, depo ve fabrika inşaatları ile Körfez boyunca devam eden konut projeleri; kalın donatı ve yoğun beton dökümü gerektiriyor. Bu tür işler için 24 mm kapasiteli demir bükme ve kesme makineleri ile güçlü beton vibratörleri öne çıkıyor.',
+        giris: 'Kocaeli\'deki şantiyelere demir bükme makinesi, demir kesme makinesi, beton vibratörü ve kompaktör tedarik ediyoruz. İzmit ve Gölcük başta olmak üzere Kocaeli\'ye düzenli olarak geliyoruz. Bursa ile İzmit arası karayoluyla yaklaşık 135 km.',
+        detay: 'İzmit, Gölcük, Kartepe ve Başiskele\'deki konut projeleri ile Körfez boyunca uzanan sanayi tesisleri ve depo inşaatları; kalın donatı ve yoğun beton dökümü gerektiriyor. Bu tür işler için 24 mm kapasiteli demir bükme ve kesme makineleri ile güçlü beton vibratörleri öne çıkıyor.',
         ilceler: ['İzmit', 'Gebze', 'Darıca', 'Çayırova', 'Dilovası', 'Körfez', 'Derince', 'Kartepe', 'Başiskele', 'Gölcük', 'Karamürsel', 'Kandıra'],
-        tumIlceler: true
-    },
-    {
-        slug: 'sakarya', ad: 'Sakarya', mesafe: 165,
-        giris: 'Sakarya\'daki müteahhit ve şantiyelere demir bükme makinesi, demir kesme makinesi, beton vibratörü ve kompaktör gönderiyoruz. Bursa ile Adapazarı arası yaklaşık 165 km.',
-        detay: 'Sakarya\'da konut, sanayi ve altyapı yatırımları; deprem yönetmeliğine uygun, sık donatılı ve iyi sıkıştırılmış beton gerektiriyor. Doğru vibratör kullanımı betondaki boşlukları alarak yapının dayanımına doğrudan katkı sağlar.',
-        ilceler: ['Adapazarı', 'Serdivan', 'Erenler', 'Arifiye', 'Sapanca', 'Akyazı', 'Hendek', 'Karasu', 'Geyve', 'Pamukova', 'Kocaali', 'Ferizli', 'Söğütlü', 'Karapürçek', 'Taraklı', 'Kaynarca'],
         tumIlceler: true
     },
     {
@@ -218,13 +204,6 @@ const sehirler = [
         giris: 'Yalova, Bursa\'ya yaklaşık 70 km mesafesiyle bize en yakın illerden biri. Yalova\'daki şantiyelere demir bükme, demir kesme, beton vibratörü ve kompaktör tedarik ediyoruz.',
         detay: 'Çınarcık, Armutlu ve Altınova gibi ilçelerdeki konut ve yazlık inşaatlarında, çoğunlukla 220V ile çalışabilen, taşıması kolay makineler tercih ediliyor. Bu tür işler için 18-20 mm demir bükme makineleri ve 1,5 HP beton vibratörleri pratik çözümler sunar.',
         ilceler: ['Merkez', 'Çiftlikköy', 'Altınova', 'Armutlu', 'Çınarcık', 'Termal'],
-        tumIlceler: true
-    },
-    {
-        slug: 'bilecik', ad: 'Bilecik', mesafe: 95,
-        giris: 'Bilecik\'teki inşaat projeleri için makinelerimizi Bursa\'dan gönderiyoruz. Bursa ile Bilecik arası yaklaşık 95 km.',
-        detay: 'Bozüyük\'teki sanayi tesisleri ve Bilecik genelindeki konut ve altyapı işleri için demir bükme ve kesme makineleri, beton vibratörleri ve zemin sıkıştırma için benzinli kompaktörler sunuyoruz.',
-        ilceler: ['Merkez', 'Bozüyük', 'Osmaneli', 'Pazaryeri', 'Söğüt', 'Gölpazarı', 'İnhisar', 'Yenipazar'],
         tumIlceler: true
     },
     {
@@ -255,43 +234,12 @@ const sehirler = [
         ilceler: ['Merkez', 'Biga', 'Çan', 'Gelibolu', 'Ezine', 'Lapseki', 'Ayvacık', 'Bayramiç', 'Yenice', 'Eceabat', 'Gökçeada', 'Bozcaada'],
         tumIlceler: true
     },
-    {
-        slug: 'izmir', ad: 'İzmir', mesafe: 330,
-        giris: 'İzmir\'deki müteahhit, kalıpçı ve demirci ekipleri için demir bükme makinesi, demir kesme makinesi, beton vibratörü ve kompaktör gönderiyoruz. Bursa ile İzmir arası otoyolla yaklaşık 330 km.',
-        detay: 'İzmir\'de Bornova, Buca, Çiğli ve Karşıyaka gibi merkez ilçelerdeki kentsel dönüşüm ve konut projeleri ile Torbalı, Kemalpaşa ve Menemen\'deki sanayi yapıları; güçlü ve sürekli çalışabilen makinelere ihtiyaç duyuyor. Çeşme, Urla ve Seferihisar\'daki yazlık inşaatlarında ise taşınabilir modeller öne çıkıyor.',
-        ilceler: ['Bornova', 'Buca', 'Karşıyaka', 'Çiğli', 'Bayraklı', 'Konak', 'Karabağlar', 'Gaziemir', 'Menemen', 'Torbalı', 'Kemalpaşa', 'Menderes', 'Urla', 'Çeşme', 'Seferihisar', 'Aliağa', 'Bergama', 'Ödemiş', 'Tire'],
-        tumIlceler: false
-    },
-    {
-        slug: 'manisa', ad: 'Manisa', mesafe: 300,
-        giris: 'Manisa\'daki inşaat ve sanayi projelerine demir bükme, demir kesme, beton vibratörü ve kompaktör gönderiyoruz. Bursa ile Manisa arası yaklaşık 300 km.',
-        detay: 'Manisa Organize Sanayi Bölgesi\'ndeki fabrika ve depo inşaatları, Akhisar, Turgutlu ve Salihli\'deki konut projeleri; kalın donatı ve geniş döşeme dökümleri için güçlü makineler gerektiriyor.',
-        ilceler: ['Yunusemre', 'Şehzadeler', 'Akhisar', 'Turgutlu', 'Salihli', 'Soma', 'Alaşehir', 'Saruhanlı', 'Kula', 'Kırkağaç', 'Demirci', 'Sarıgöl', 'Gördes', 'Selendi', 'Ahmetli', 'Gölmarmara', 'Köprübaşı'],
-        tumIlceler: true
-    },
     // İlçe sayfaları (ust: bağlı olduğu il)
     {
         slug: 'bandirma', ad: 'Bandırma', ust: 'Balıkesir', mesafe: 115,
         giris: 'Bandırma\'daki şantiyelere demir bükme makinesi, demir kesme makinesi, beton vibratörü ve kompaktör gönderiyoruz. Bursa ile Bandırma arası yaklaşık 115 km; Bandırma, Bursa\'dan en hızlı ulaştığımız ilçelerden biri.',
         detay: 'Bandırma\'da liman ve sanayi bölgesi çevresindeki depo ve tesis inşaatları ile şehir merkezindeki konut projeleri, hem kalın donatı işleri hem de geniş beton dökümleri için güçlü makineler gerektiriyor. Gönen, Erdek ve Manyas gibi komşu ilçelere de aynı şekilde gönderim yapıyoruz.'
     },
-    {
-        slug: 'inegol', ad: 'İnegöl', ust: 'Bursa', mesafe: 45,
-        giris: 'İnegöl\'deki inşaat ve sanayi projelerine demir bükme makinesi, demir kesme makinesi, beton vibratörü ve kompaktör tedarik ediyoruz. Bursa merkez ile İnegöl arası yaklaşık 45 km.',
-        detay: 'İnegöl\'ün mobilya sanayisi ve organize sanayi bölgesindeki fabrika ve atölye inşaatları ile hızla büyüyen konut alanları; donatı hazırlama ve zemin sıkıştırma için makineye sürekli ihtiyaç duyuyor.'
-    },
-    {
-        slug: 'gebze', ad: 'Gebze', ust: 'Kocaeli', mesafe: 110,
-        giris: 'Gebze\'deki şantiyelere ve sanayi projelerine demir bükme makinesi, demir kesme makinesi, beton vibratörü ve kompaktör gönderiyoruz. Osmangazi Köprüsü üzerinden Bursa ile Gebze arası yaklaşık 110 km.',
-        detay: 'Gebze ve çevresindeki organize sanayi bölgeleri, lojistik depoları ve Darıca, Çayırova gibi komşu ilçelerdeki konut projeleri; 24 mm kapasiteli demir makineleri ve güçlü beton vibratörlerine yoğun talep oluşturuyor.'
-    },
-    {
-        slug: 'ankara', ad: 'Ankara', mesafe: 385,
-        giris: 'Ankara\'daki şantiyeler için inşaat makinelerimizi Bursa\'dan gönderiyoruz. Bursa ile Ankara arası yaklaşık 385 km.',
-        detay: 'Etimesgut, Sincan, Gölbaşı ve Pursaklar gibi hızla büyüyen ilçelerdeki toplu konut projeleri ile kamu yatırımları, Ankara\'da demir bükme, demir kesme ve beton vibratörü talebini sürekli canlı tutuyor.',
-        ilceler: ['Çankaya', 'Keçiören', 'Yenimahalle', 'Mamak', 'Etimesgut', 'Sincan', 'Altındağ', 'Pursaklar', 'Gölbaşı', 'Polatlı', 'Çubuk', 'Kahramankazan', 'Elmadağ', 'Beypazarı'],
-        tumIlceler: false
-    }
 ];
 
 // Şehir sayfalarındaki "Yalova Beton Vibratörü" gibi ürün bölümlerinin başlığı ve kısa metni
