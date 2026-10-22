@@ -107,39 +107,123 @@ ${govde}
     uretilenSayfalar.push({ url: canonical, images: [ogGorsel, ...gorseller.map(g => `${firma.site}/${g}`)] });
 }
 
+// "Kapasite: 18MM" -> { ad: 'Kapasite', deger: '18MM' }
+function ozellikAyir(s) {
+    const i = s.indexOf(':');
+    return i > -1 ? { ad: s.slice(0, i).trim(), deger: s.slice(i + 1).trim() } : { ad: s, deger: '' };
+}
+
 function urunKarti(p) {
-    return `<a href="/${p.detailPage}" class="p-card">
-                    <img src="/${p.img}" alt="${esc(p.name)}" loading="lazy">
-                    <div class="p-info">
+    const ozellikler = p.specs.slice(0, 2).map(ozellikAyir);
+    return `<a href="/${p.detailPage}" class="u-kart">
+                    <div class="u-kart-gorsel">
+                        <span class="u-marka">${esc(p.brand)}</span>
+                        <img src="/${p.img}" alt="${esc(p.name)}" loading="lazy">
+                    </div>
+                    <div class="u-kart-govde">
                         <h3>${esc(p.name)}</h3>
-                        <span class="p-detail">İncele <i class="fas fa-arrow-right"></i></span>
+                        <ul class="u-ozellik">
+                            ${ozellikler.map(o => `<li><span>${esc(o.ad)}</span>${esc(o.deger)}</li>`).join('\n                            ')}
+                        </ul>
+                        <span class="u-incele">İncele <i class="fas fa-arrow-right"></i></span>
                     </div>
                 </a>`;
+}
+
+// Sayfanın üstündeki lacivert bant: başlık, kısa metin, rozetler ve iletişim butonları
+function hero({ h1, alt, paragraflar, rozetler = [], gorsel, mesaj }) {
+    return `    <section class="sayfa-hero">
+        <div class="container sayfa-hero-ic${gorsel ? '' : ' tek-sutun'}">
+            <div class="sayfa-hero-metin">
+                <h1>${esc(h1)}</h1>
+                ${alt ? `<p class="sayfa-hero-alt">${esc(alt)}</p>` : ''}
+                ${paragraflar.map(p => `<p>${p}</p>`).join('\n                ')}
+                ${rozetler.length ? `<ul class="hero-rozetler">
+                    ${rozetler.map(r => `<li><i class="${r.ikon}"></i> ${esc(r.metin)}</li>`).join('\n                    ')}
+                </ul>` : ''}
+                <div class="hero-butonlar">
+                    <a href="tel:${firma.telefon}" class="btn-primary"><i class="fas fa-phone"></i> ${firma.telefonGorunen}</a>
+                    <a href="${whatsappLink(mesaj)}" target="_blank" rel="noopener" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp'tan Fiyat Al</a>
+                </div>
+            </div>
+            ${gorsel ? `<div class="sayfa-hero-gorsel"><img src="/${gorsel.img}" alt="${esc(gorsel.alt)}"></div>` : ''}
+        </div>
+    </section>`;
 }
 
 function sssHtml(sss, baslik = 'Sıkça Sorulan Sorular') {
     return `<div class="seo-block">
                 <h2>${esc(baslik)}</h2>
+                <div class="faq-liste">
                 ${sss.map(s => `<details class="faq-item">
                     <summary>${esc(s.q)}</summary>
                     <p>${esc(s.a)}</p>
                 </details>`).join('\n                ')}
+                </div>
             </div>`;
 }
 
 function iletisimKutusu(mesaj) {
-    return `<div class="seo-cta">
-                <p><strong>Fiyat ve stok bilgisi için hemen ulaşın:</strong> ${firma.telefonGorunen}</p>
+    return `<div class="cta-bant">
+                <div class="cta-bant-metin">
+                    <i class="fab fa-whatsapp"></i>
+                    <div>
+                        <strong>Güncel fiyat ve stok bilgisi için yazın</strong>
+                        <span>Ürün adını WhatsApp'tan göndermeniz yeterli · ${firma.telefonGorunen}</span>
+                    </div>
+                </div>
                 <div class="contact-buttons">
                     <a href="tel:${firma.telefon}" class="btn-primary"><i class="fas fa-phone"></i> Hemen Ara</a>
-                    <a href="${whatsappLink(mesaj)}" target="_blank" rel="noopener" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp'tan Fiyat Al</a>
+                    <a href="${whatsappLink(mesaj)}" target="_blank" rel="noopener" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp'tan Yaz</a>
                 </div>
             </div>`;
 }
 
 function bolgeLinkleri(haric) {
-    const linkler = sehirler.filter(s => s.slug !== haric).map(s => `<a href="/bolgeler/${s.slug}.html">${esc(s.ad)}</a>`);
-    return `<p class="bolge-satir">Bursa'dan Türkiye'nin 81 iline gönderim yapıyoruz. Düzenli olarak gittiğimiz bölgeler: ${linkler.join(', ')}. <a href="/bolgeler/">Tüm hizmet bölgeleri</a></p>`;
+    const linkler = sehirler.filter(s => s.slug !== haric).map(s => `<li><a href="/bolgeler/${s.slug}.html"><i class="fas fa-location-dot"></i> ${esc(s.ad)}</a></li>`);
+    return `<aside class="bolge-panel">
+                <div class="bolge-panel-baslik">
+                    <span class="bolge-ikon"><i class="fas fa-truck-fast"></i></span>
+                    <div>
+                        <h2>Düzenli olarak gittiğimiz bölgeler</h2>
+                        <p>Bursa'dan Türkiye'nin 81 iline gönderim yapıyoruz.</p>
+                    </div>
+                </div>
+                <ul class="bolge-cipler">
+                    ${linkler.join('\n                    ')}
+                </ul>
+                <a href="/bolgeler/" class="bolge-tumu">Tüm hizmet bölgeleri <i class="fas fa-arrow-right"></i></a>
+            </aside>`;
+}
+
+// "<strong>Kapasite (mm):</strong> açıklama" maddesini başlık + metin olarak ayırır
+function rehberKarti(madde, i) {
+    const m = madde.match(/^<strong>(.*?)<\/strong>\s*(.*)$/s);
+    const baslik = m ? m[1].replace(/:\s*$/, '') : '';
+    const metin = m ? m[2] : madde;
+    return `<li class="rehber-kart">
+                        <span class="rehber-no">${String(i + 1).padStart(2, '0')}</span>
+                        <div>
+                            ${baslik ? `<h3>${baslik}</h3>` : ''}
+                            <p>${metin}</p>
+                        </div>
+                    </li>`;
+}
+
+// Karşılaştırma tablosu: en az iki üründe geçen özellikler sütun olur
+function karsilastirmaTablosu(urunler) {
+    const sayac = new Map();
+    urunler.forEach(p => p.specs.map(ozellikAyir).forEach(o => o.deger && sayac.set(o.ad, (sayac.get(o.ad) || 0) + 1)));
+    const sutunlar = [...sayac].filter(([, n]) => n >= Math.min(2, urunler.length)).sort((a, b) => b[1] - a[1]).slice(0, 5).map(([ad]) => ad);
+    const deger = (p, ad) => { const o = p.specs.map(ozellikAyir).find(o => o.ad === ad); return o ? esc(o.deger) : '<span class="bos">—</span>'; };
+    return `<div class="table-scroll">
+                <table class="karsilastirma">
+                    <thead><tr><th>Model</th><th>Marka</th>${sutunlar.map(s => `<th>${esc(s)}</th>`).join('')}</tr></thead>
+                    <tbody>
+                    ${urunler.map(p => `<tr><td><a href="/${p.detailPage}">${esc(p.name)}</a></td><td>${esc(p.brand)}</td>${sutunlar.map(s => `<td>${deger(p, s)}</td>`).join('')}</tr>`).join('\n                    ')}
+                    </tbody>
+                </table>
+                </div>`;
 }
 
 // --- KATEGORİ SAYFALARI ---
@@ -148,36 +232,42 @@ for (const [catKey, cat] of Object.entries(categories)) {
     const urunler = kategoriUrunleri(catKey);
     if (!icerik || urunler.length === 0) continue;
 
-    const karsilastirma = `<div class="seo-block">
-                <h2>${esc(cat.name)} Karşılaştırma</h2>
-                <div class="table-scroll">
-                <table class="specs-table">
-                    ${urunler.map(p => `<tr><td><a href="/${p.detailPage}">${esc(p.name)}</a></td><td>${p.specs.slice(0, 3).map(esc).join(' · ')}</td></tr>`).join('\n                    ')}
-                </table>
-                </div>
-            </div>`;
+    const markalar = [...new Set(urunler.map(p => p.brand))];
+    const govde = `${hero({
+        h1: icerik.h1,
+        paragraflar: icerik.intro,
+        rozetler: [
+            { ikon: 'fas fa-box', metin: `${urunler.length} model` },
+            { ikon: 'fas fa-tag', metin: markalar.join(' · ') },
+            { ikon: 'fas fa-truck-fast', metin: '81 ile gönderim' }
+        ],
+        gorsel: { img: urunler[0].img, alt: urunler[0].name },
+        mesaj: `Merhaba, ${cat.short} makineleri hakkında fiyat bilgisi almak istiyorum.`
+    })}
 
-    const govde = `    <section class="seo-page">
+    <section class="seo-page">
         <div class="container">
-            <div class="seo-hero">
-                <h1>${esc(icerik.h1)}</h1>
-                ${icerik.intro.map(p => `<p>${p}</p>`).join('\n                ')}
+            <div class="bolum-baslik">
+                <h2>${esc(cat.name)} Modelleri</h2>
+                <span>${urunler.length} ürün</span>
             </div>
-
-            <div class="product-grid">
+            <div class="u-grid">
                 ${urunler.map(urunKarti).join('\n                ')}
             </div>
 
-            ${iletisimKutusu(`Merhaba, ${cat.short} makineleri hakkında fiyat bilgisi almak istiyorum.`)}
-
             ${icerik.rehber.map(r => `<div class="seo-block">
                 <h2>${esc(r.baslik)}</h2>
-                <ul class="seo-list">
-                    ${r.maddeler.map(m => `<li>${m}</li>`).join('\n                    ')}
+                <ul class="rehber-grid">
+                    ${r.maddeler.map(rehberKarti).join('\n                    ')}
                 </ul>
             </div>`).join('\n            ')}
 
-            ${karsilastirma}
+            ${urunler.length > 1 ? `<div class="seo-block">
+                <h2>${esc(cat.name)} Karşılaştırma</h2>
+                ${karsilastirmaTablosu(urunler)}
+            </div>` : ''}
+
+            ${iletisimKutusu(`Merhaba, ${cat.short} makineleri hakkında fiyat bilgisi almak istiyorum.`)}
 
             ${bolgeLinkleri()}
         </div>
@@ -204,10 +294,7 @@ for (const [catKey, cat] of Object.entries(categories)) {
 for (const p of products) {
     const cat = categories[p.category];
     const icerik = kategoriIcerik[p.category];
-    const specs = p.specs.map(s => {
-        const i = s.indexOf(':');
-        return i > -1 ? { ad: s.slice(0, i).trim(), deger: s.slice(i + 1).trim() } : { ad: s, deger: '' };
-    });
+    const specs = p.specs.map(ozellikAyir);
 
     const benzerler = kategoriUrunleri(p.category).filter(r => r.id !== p.id).slice(0, 3);
     const benzerHtml = benzerler.length ? `<div class="related-products">
@@ -328,7 +415,7 @@ for (const s of sehirler) {
                     </div>
                 </a>`).join('\n                ')}
             </div>
-            <p>Ayrıca <a href="/vibrator_hortumu/">vibratör hortumu</a>, <a href="/ciroz/">çiroz</a> ve <a href="/el_aletleri/">akülü el aletleri</a> de bulunur.</p>`;
+            <p class="ek-urunler">Ayrıca <a href="/vibrator_hortumu/">vibratör hortumu</a>, <a href="/ciroz/">çiroz</a> ve <a href="/el_aletleri/">akülü el aletleri</a> de bulunur.</p>`;
 
     const ilcelerHtml = s.ilceler ? `<div class="seo-block">
                 <h2>${esc(s.ad)} İlçeleri</h2>
@@ -344,25 +431,31 @@ for (const s of sehirler) {
     ];
 
     const konum = s.ust ? `${s.ad} (${s.ust})` : s.ad;
-    const govde = `    <section class="seo-page">
+    const govde = `${hero({
+        h1: `${s.ad} İnşaat Makineleri`,
+        alt: `${konum} için demir bükme makinesi, demir kesme makinesi, beton vibratörü (inşaat vibratörü) ve kompaktör`,
+        paragraflar: [esc(s.giris), esc(s.detay)],
+        rozetler: [
+            { ikon: 'fas fa-location-dot', metin: s.mesafe ? `Bursa'ya yaklaşık ${s.mesafe} km` : 'Merkezimiz Nilüfer / Bursa' },
+            { ikon: 'fas fa-truck-fast', metin: 'Düzenli olarak bizzat geliyoruz' }
+        ],
+        mesaj: `Merhaba, ${s.ad} için inşaat makineleri hakkında fiyat bilgisi almak istiyorum.`
+    })}
+
+    <section class="seo-page">
         <div class="container">
-            <div class="seo-hero">
-                <h1>${esc(s.ad)} İnşaat Makineleri</h1>
-                <p class="seo-subtitle">${esc(konum)} için demir bükme makinesi, demir kesme makinesi, beton vibratörü (inşaat vibratörü) ve kompaktör</p>
-                <p>${esc(s.giris)}</p>
-                <p>${esc(s.detay)}</p>
-                <p><strong>${esc(s.ad)} bölgesine Bursa'dan düzenli olarak bizzat geliyoruz.</strong> Ürün ve gönderim bilgisi için WhatsApp'tan yazabilirsiniz.</p>
+            <div class="bolum-baslik">
+                <h2>${esc(s.ad)} için ürünlerimiz</h2>
             </div>
-
-            ${iletisimKutusu(`Merhaba, ${s.ad} için inşaat makineleri hakkında fiyat bilgisi almak istiyorum.`)}
-
             ${bolumler}
 
             ${ilcelerHtml}
 
             ${sssHtml(sss)}
 
-            <p><a href="/bolgeler/">Diğer hizmet bölgelerimiz</a></p>
+            ${iletisimKutusu(`Merhaba, ${s.ad} için inşaat makineleri hakkında fiyat bilgisi almak istiyorum.`)}
+
+            ${bolgeLinkleri(s.slug)}
         </div>
     </section>`;
 
@@ -392,17 +485,22 @@ sayfa({
     gorsel: products[0].img,
     yol: [{ ad: 'Ana Sayfa', url: '/' }, { ad: 'Hizmet Bölgeleri', url: '/bolgeler/' }],
     jsonLd: [{ '@type': 'CollectionPage', name: 'Hizmet Bölgeleri', url: tamUrl('bolgeler/') }],
-    govde: `    <section class="seo-page">
-        <div class="container">
-            <div class="seo-hero">
-                <h1>Hizmet Bölgelerimiz</h1>
-                <p>Avcı Makine İnşaat, Bursa Nilüfer'den Türkiye'nin 81 iline demir bükme makinesi, demir kesme makinesi, beton vibratörü, vibratör hortumu, kompaktör ve çiroz gönderir. Bulunduğunuz şehri seçerek o bölgeye özel bilgilere ulaşabilirsiniz.</p>
-            </div>
+    govde: `${hero({
+        h1: 'Hizmet Bölgelerimiz',
+        paragraflar: ['Avcı Makine İnşaat, Bursa Nilüfer\'den Türkiye\'nin 81 iline demir bükme makinesi, demir kesme makinesi, beton vibratörü, vibratör hortumu, kompaktör ve çiroz gönderir. Bulunduğunuz şehri seçerek o bölgeye özel bilgilere ulaşabilirsiniz.'],
+        rozetler: [
+            { ikon: 'fas fa-location-dot', metin: `${sehirler.length} bölgeye bizzat gidiyoruz` },
+            { ikon: 'fas fa-truck-fast', metin: '81 ile gönderim' }
+        ],
+        mesaj: 'Merhaba, bulunduğum şehre gönderim ve fiyat hakkında bilgi almak istiyorum.'
+    })}
 
+    <section class="seo-page">
+        <div class="container">
             <div class="seo-block">
                 <h2>Düzenli Olarak Gittiğimiz Bölgeler</h2>
-                <ul class="bolge-liste">
-                    ${sehirler.map(s => `<li><a href="/bolgeler/${s.slug}.html">${esc(s.ad)}${s.ust ? ` (${esc(s.ust)})` : ''}</a> <span>· Bursa'ya ${s.mesafe ? `yaklaşık ${s.mesafe} km` : 'merkez'}</span></li>`).join('\n                    ')}
+                <ul class="bolge-kartlar">
+                    ${sehirler.map(s => `<li><a href="/bolgeler/${s.slug}.html"><i class="fas fa-location-dot"></i><strong>${esc(s.ad)}${s.ust ? ` <small>(${esc(s.ust)})</small>` : ''}</strong><span>${s.mesafe ? `Bursa'ya yaklaşık ${s.mesafe} km` : 'Merkez'}</span></a></li>`).join('\n                    ')}
                 </ul>
             </div>
 
